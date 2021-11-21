@@ -1,6 +1,12 @@
 import React from "react"
 import Navibar from "../components/Navibar"
+import Carousel from "../components/Carousel"
+import Cards from "../components/Cards"
+import Infobar from "../components/Infobar"
 
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
 
 
 const Home = () => {
@@ -8,11 +14,17 @@ const Home = () => {
     return (
         <div>
             <div>
-            <Navibar/>
+                <Navibar />
             </div>
-            <div>Banner</div>
-            <div>tags/categories</div>
-            <div>List of Guides</div>
+            <Container>
+                <Carousel />
+            </Container>
+            <Container>
+                <Infobar />
+            </Container>
+            <Container>
+                <Cards />
+            </Container>
         </div>
     )
 }

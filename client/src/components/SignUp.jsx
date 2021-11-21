@@ -8,6 +8,13 @@ import { useState } from "react"
 export default function Signup() {
     const [Auth, setAuth] = useState(0)
     const [Message, setMessage] = useState(null)
+    // const [Preview, setPreview] = useState(null)
+
+    // const handlePreview = (event) =>{
+    //     console.log("LINK PREVIEW",event.currentTarget.value)
+    //     setPreview(URL.createObjectURL(event.currentTarget.value))
+    // }
+
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log("USERNAME", event.currentTarget.username.value);
@@ -17,40 +24,40 @@ export default function Signup() {
         // const data = new FormData(event.currentTarget);
 
         axios
-        .post("/api/users/signup", {
-            username: event.currentTarget.username.value,
-            email: event.currentTarget.email.value,
-            password: event.currentTarget.password.value,
-            profileimg: event.currentTarget.profileimg.value,
-        })
-        .then((response)=> {
+            .post("/api/users/signup", {
+                username: event.currentTarget.username.value,
+                email: event.currentTarget.email.value,
+                password: event.currentTarget.password.value,
+                profileimg: event.currentTarget.profileimg.value,
+            })
+            .then((response) => {
 
-            console.log("Auth",response.data.authenticated)
-            console.log("Message",response.data.message)
+                console.log("Auth", response.data.authenticated)
+                console.log("Message", response.data.message)
 
-            if (response.data.authenticated) {
-            window.localStorage.setItem("token",response.data.token)
-            setAuth(response.data.authenticated)
-            
-            setTimeout(function () {
-                window.location.replace("/");
-            }, 1300);
-        }
-        else {
-            setAuth(response.data.authenticated)
-            setMessage(response.data.message)
+                if (response.data.authenticated) {
+                    window.localStorage.setItem("token", response.data.token)
+                    setAuth(response.data.authenticated)
 
-        }
+                    setTimeout(function () {
+                        window.location.replace("/");
+                    }, 1300);
+                }
+                else {
+                    setAuth(response.data.authenticated)
+                    setMessage(response.data.message)
+
+                }
 
 
-        })
+            })
     }
 
     return (
-        <div> 
+        <div>
             <h1>Sign Up</h1>
             <div class="container col-md-4">
-            <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input
@@ -87,24 +94,34 @@ export default function Signup() {
                             placeholder="Upload Profile Image"
                         />
                     </div>
+                    {/* <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" onChange={handlePreview}/>
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+                    <img src={Preview} alt="..." class="img-thumbnail"/> */}
                     <button type="submit" class="btn btn-primary">
                         Submit
                     </button>
                     <br></br>
                 </form>
-                { Auth === 0 ?  (<br></br>) 
-                : Auth === true ? (
-                <div class="alert alert-success" role="alert">
-                    Sign Up is successful!
-                </div>
-                )
-                : (
-                    <div class="alert alert-danger" role="alert">
-                    {Message}
-                </div>
-                )
+                {Auth === 0 ? (<br></br>)
+                    : Auth === true ? (
+                        <div class="alert alert-success" role="alert">
+                            Sign Up is successful!
+                        </div>
+                    )
+                        : (
+                            <div class="alert alert-danger" role="alert">
+                                {Message}
+                            </div>
+                        )
                 }
-                </div>
+            </div>
         </div>
     )
 }

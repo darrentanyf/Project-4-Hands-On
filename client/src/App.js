@@ -11,7 +11,7 @@ import Home from "./components/Home"
 import About from "./components/About"
 import Login from "./components/Login"
 import Signup from "./components/SignUp"
-import Guides from "./components/GuidesPage"
+import Discover from "./components/Discover"
 
 function App() {
   const [user, setUser] = useState({ authenticated: false, userInfo: {} });
@@ -25,7 +25,7 @@ function App() {
           <Route path="login" element={<Login />}></Route>
           <Route path="about" element={<About />}></Route>
           <Route path="signup" element={<Signup />}></Route>
-          <Route path="guides" element={<Guides />}></Route>
+          <Route path="guides" element={<Discover />}></Route>
         </Routes>
         </BrowserRouter>
     </div>

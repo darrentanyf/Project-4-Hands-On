@@ -26,7 +26,7 @@ router.post("/login", async (req, res) => {
     }
 
     // SUCCESSFUL LOGIN
-    if (bcrypt.compareSync(password, user.rows[0].user_password)) {
+    if (bcrypt.compareSync(password, user.rows[0].users_password)) {
         const jwtToken = jwtGenerator(user.rows[0].users_id);
         console.log("TOKEN", jwtToken);
         return res.json({
@@ -81,7 +81,7 @@ router.post("/signup", async (req, res) => {
     // const newPassword = bcrypt.hash(password, bcrypt.genSalt(10));
 
     let newUser = await pool.query(
-        "INSERT INTO users (username, user_password, email, profile_img) VALUES ($1,$2,$3,$4) RETURNING *",
+        "INSERT INTO users (username, users_password, email, profile_img) VALUES ($1,$2,$3,$4) RETURNING *",
         [username, newPassword, email, profileimg]
     );
 
