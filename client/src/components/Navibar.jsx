@@ -35,6 +35,7 @@ const Navibar = () => {
             { auth === true ? 
             (
               <div style={{ display: "flex", justifyContent: "right" }}>
+                <a class="nav-link" href="/Account">My Account</a>
               <a class="nav-link" href="/" onClick={handleLogout}>Logout</a>
               </div>
 

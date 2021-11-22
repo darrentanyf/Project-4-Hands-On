@@ -7,77 +7,37 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
 const Cards = () => {
-    console.log("TESTIN")
-    
-    useEffect(()=>{
+    const [guides, setGuides] = useState([])
+
+    useEffect(() => {
         const fetchGuides = async () => {
             const url = "/api/guides";
             const data = await axios.get(url);
-            console.log("DATA",data)
+            console.log("DATA", data)
+            setGuides([data.data[0],data.data[1],data.data[2]])
         }
         fetchGuides()
-    },)
+    }, [])
+
+    console.log("GUIDES", guides)
 
     return (
         <div>
             <Row>
-
-                <Col style={{ display: "flex", justifyContent: "center" }}>
-                    <Card style={{ width: "17rem" }}>
-                        <Card.Img variant="top" src="https://images.unsplash.com/photo-1606937295547-bc0f668595b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" height="180px"/>
-                        <Card.Body>
-                            <Card.Title>Guide 1</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-
-                <Col style={{ display: "flex", justifyContent: "center" }}>
-                    <Card style={{ width: "17rem" }}>
-                        <Card.Img variant="top" src="https://images.unsplash.com/photo-1606937295547-bc0f668595b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" height="180px"/>
-                        <Card.Body>
-                            <Card.Title>Guide 2</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                
-                <Col style={{ display: "flex", justifyContent: "center" }}>
-                <Card style={{ width: "17rem" }}>
-                    <Card.Img variant="top" src="https://images.unsplash.com/photo-1606937295547-bc0f668595b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" height="180px"/>
-                    <Card.Body>
-                        <Card.Title>Guide 3</Card.Title>
-                        <Card.Text>
-                            Some quick example text to build on the card title and make up the
-                            bulk of the card's content.
-                        </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                </Card>
-                </Col>
-                
-                <Col style={{ display: "flex", justifyContent: "center" }}>
-                    <Card style={{ width: "17rem" }}>
-                        <Card.Img variant="top" src="https://images.unsplash.com/photo-1606937295547-bc0f668595b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" height="180px"/>
-                        <Card.Body>
-                            <Card.Title>Guide 4</Card.Title>
-                            <Card.Text>
-                                Some quick example text to build on the card title and make up the
-                                bulk of the card's content.
-                            </Card.Text>
-                            <Button variant="primary">Go somewhere</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-
+                { guides.map((guides,key)=>(
+                        <Col style={{ display: "flex", justifyContent: "center" }}>
+                        <Card style={{ width: "19rem" }}>
+                            <Card.Img variant="top" src={guides.guides_img} height="180px" />
+                            <Card.Body>
+                                <Card.Title>{guides.name}</Card.Title>
+                                <Card.Text>
+                                    {guides.description.slice(0,99)+"..."}
+                                </Card.Text>
+                                <a href={`/guides/${guides.guides_id}`}><Button variant="primary" >Check it out</Button></a>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
             </Row>
         </div>
     );

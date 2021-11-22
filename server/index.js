@@ -7,6 +7,7 @@ const pool = require("./db")
 const usersController = require("./controllers/users")
 const guidesController = require("./controllers/guides")
 const reviewsController = require("./controllers/reviews")
+const stepsController = require("./controllers/steps")
 
 //MIDDLEWARE
 app.use(cors());
@@ -14,6 +15,7 @@ app.use(express.json())
 app.use("/api/users", usersController)
 app.use("/api/guides", guidesController)
 app.use("/api/reviews", reviewsController)
+app.use("/api/steps", stepsController)
 
 //ROUTES
 app.post("/test",async (req,res) => {
