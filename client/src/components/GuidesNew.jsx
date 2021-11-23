@@ -21,16 +21,22 @@ const GuidesNew = () => {
     const [number, setNumber] = useState([1])
     const [image, setImage] = useState([])
     const [steps, setSteps] = useState([])
+    const [guides, setGuides] = useState()
+
 
     Authenticate()
     const auth = verify?.user?.authenticated
-
+    const userId = verify?.user?.userInfo
+    console.log("userId", userId)
+    
+    
     if (auth === false) {
         console.log("IM NOT LOGGED IN")
         navigate('/login')
     }
     else {
         console.log("IM LOGGED IN")
+
 
     }
 
@@ -50,14 +56,25 @@ const GuidesNew = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         let stepNumber = event.currentTarget
+
+        // console.log("GUIDE IMAGE", stepNumber.guideImage.value)
+        // console.log("GUIDE TITLE", stepNumber.guideTitle.value)
+        // console.log("GUIDE DESCRIPTION", stepNumber.guideDescription.value)
+        // console.log("GUIDE DIFFICULTY", stepNumber.guideDifficulty.value)
+        // console.log("GUIDE TIME TAKEN", stepNumber.guideTimeTaken.value)
+        // console.log("GUIDE TOOLS REQUIRED", stepNumber.guideToolsRequired.value)
+        // console.log("GUIDE PARTS REQUIRED", stepNumber.guidePartsRequired.value)
+
+
+
         for (let i = 1; i < (number.length + 2); i++) {
             let newImage = "image" + i
             let newTitle = "title" + i
             let newDescription = "description" + i
-            console.log("GUIDE STEP", "STEP " + i)
-            console.log("GUIDE IMAGE", stepNumber[newImage].value)
-            console.log("GUIDE TITLE", stepNumber[newTitle].value)
-            console.log("GUIDE DESCRIPTION", stepNumber[newDescription].value)
+            console.log("STEPS STEP", "STEP " + i)
+            console.log("STEPS IMAGE", stepNumber[newImage].value)
+            console.log("STEPS TITLE", stepNumber[newTitle].value)
+            console.log("STEPS DESCRIPTION", stepNumber[newDescription].value)
 
             steps.push({
                 step: i,
@@ -66,9 +83,20 @@ const GuidesNew = () => {
                 steps_img: stepNumber[newImage].value
             })
 
+            setGuides({
+                users_id: userId,
+                name: stepNumber.guideTitle.value,
+                description:stepNumber.guideDescription.value,
+                tools_required: stepNumber.guideToolsRequired.value,
+                parts_required: stepNumber.guidePartsRequired.value,
+                difficulty: stepNumber.guideDifficulty.value,
+                time_taken: stepNumber.guideTimeTaken.value,
+                guides_img: stepNumber.guideImage.value
+            })
             setSteps(steps)
             console.log("STEPS SENT", steps)
         }
+        console.log("DELAY GUIDES", guides)
         // console.log("IS THIS WORKING?")
         // console.log(stepNumber)
         // console.log(stepNumber.image1.value)
@@ -77,7 +105,18 @@ const GuidesNew = () => {
         // console.log(stepNumber.image2.value)
         // console.log(stepNumber.title2.value)
         // console.log(stepNumber.description2.value)
-    }
+
+     }
+
+    useEffect(()=> {
+        const sendNewGuide = async () => {
+            const url = "/api/guides/new";
+            const data = await axios.post(url, {newGuide: guides, newSteps: steps});
+            console.log("RESPONSE GUIDE NEW", data)
+
+        }
+        sendNewGuide()
+    },[guides])
 
     const handleImage = (event) => {
         event.preventDefault();
@@ -97,6 +136,7 @@ const GuidesNew = () => {
 
                 <Row>
                     <Form onSubmit={handleSubmit}>
+                    <br/>
                         <h4>Start your new guide </h4>
                         <Row className="g-2" style={{ margin: 20, display: "flex", justifycontent: "center" }}>
                             <Col md><Form.Group controlId="guideImage" className="" onChange={handleImage} >
@@ -140,7 +180,7 @@ const GuidesNew = () => {
                                 </FloatingLabel>
                             </Col>
                             <Col md>
-                                <FloatingLabel controlId="gudeTimeTaken" label="Works with selects">
+                                <FloatingLabel controlId="guideTimeTaken" label="Works with selects">
                                     <Form.Select aria-label="Floating label select example">
                                         <option>How long did you take?</option>
                                         <option value="1">1</option>
@@ -184,12 +224,12 @@ const GuidesNew = () => {
 
 
                         <h5>Step 1</h5>
-                        <Row className="g-2" style={{ margin: 20 }}>
+                        <Row className="g-2" style={{ margin: 20, padding:40, "background-color": "#F7F7F7", "border-radius": "3%" }}>
                             <Col md><Form.Group controlId="image1" className="mb-3" onChange={handleImage}>
                                 <Form.Label>Upload your image</Form.Label>
                                 <Form.Control type="file" />
                             </Form.Group>
-                                <Image src={image.image1} alt="" style={{ height: 110, width: 250 }} />
+                                <Image src={image.image1} alt="" style={{ height: 140, width: 250 }} />
                             </Col>
                             <Col md>
                                 <FloatingLabel controlId="title1" label="Title">
@@ -199,6 +239,7 @@ const GuidesNew = () => {
                                         style={{ height: '100px' }}
                                     />
                                 </FloatingLabel>
+                                <br/>
                                 <FloatingLabel controlId="description1" label="Description">
                                     <Form.Control
                                         as="textarea"
@@ -209,14 +250,14 @@ const GuidesNew = () => {
                             </Col>
                         </Row>
                         {number.map((element, index) => (
-                            <Row className="g-2" style={{ margin: 20 }}>
+                            <Row className="g-2" style={{ margin: 20, padding:40, "background-color": "#F7F7F7", "border-radius": "3%"  }}>
                                 <h5>Step {(parseInt(index) + 2)}</h5>
                                 <Col md><Form.Group controlId={"image" + (parseInt(index) + 2)} className="mb-3" onChange={handleImage}>
 
                                     <Form.Label>Upload your image</Form.Label>
                                     <Form.Control type="file" />
                                 </Form.Group>
-                                    <img src={image["image" + (parseInt(index) + 2)]} alt="" style={{ height: 110, width: 250 }} />
+                                    <img src={image["image" + (parseInt(index) + 2)]} alt="" style={{ height: 140, width: 250 }} />
                                 </Col>
                                 <Col md>
                                     <FloatingLabel controlId={"title" + (parseInt(index) + 2)} label="Title">
@@ -226,6 +267,7 @@ const GuidesNew = () => {
                                             style={{ height: '100px' }}
                                         />
                                     </FloatingLabel>
+                                    <br/>
                                     <FloatingLabel controlId={"description" + (parseInt(index) + 2)} label="Description">
                                         <Form.Control
                                             as="textarea"
