@@ -15,12 +15,16 @@ router.get("/:id", async (req, res) => {
     const steps = await pool.query("SELECT * FROM steps WHERE guides_id = $1", [
         id,
     ])
-
+    const reviews = await pool.query("SELECT * FROM reviews WHERE guides_id = $1", [
+        id,
+    ])
     console.log("SEARCH FOR STEPS", steps.rows)
     console.log("SEARCH FOR GUIDE", guides.rows[0])
+    console.log("SEARCH FOR REVIEWS", reviews.rows)
     res.json({
         stepData: steps.rows,
-        guideData: guides.rows[0]
+        guideData: guides.rows[0],
+        reviewData: reviews.rows
     })
 });
 

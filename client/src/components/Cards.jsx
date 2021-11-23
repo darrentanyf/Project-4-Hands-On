@@ -13,8 +13,10 @@ const Cards = () => {
         const fetchGuides = async () => {
             const url = "/api/guides";
             const data = await axios.get(url);
-            console.log("DATA", data)
-            setGuides([data.data[0],data.data[1],data.data[2]])
+            console.log("DATA", data.data)
+            console.log(data.data.length)
+            setGuides(data.data)
+
         }
         fetchGuides()
     }, [])
@@ -24,16 +26,16 @@ const Cards = () => {
     return (
         <div>
             <Row>
-                { guides?.map((guides,key)=>(
+                { guides?.map((guide,index)=>(
                         <Col style={{ display: "flex", justifyContent: "center" }}>
                         <Card style={{ width: "19rem" }}>
-                            <Card.Img variant="top" src={guides?.guides_img} height="180px" />
+                            <Card.Img variant="top" src={guides[index]?.guides_img} height="180px" />
                             <Card.Body>
-                                <Card.Title>{guides?.name}</Card.Title>
+                                <Card.Title>{guides[index]?.name}</Card.Title>
                                 <Card.Text>
-                                    {guides?.description.slice(0,99)+"..."}
+                                    {guides[index]?.description.slice(0,99)+"..."}
                                 </Card.Text>
-                                <a href={`/guides/${guides?.guides_id}`}><Button variant="primary" >Check it out</Button></a>
+                                <a href={`/guides/${guides[index]?.guides_id}`}><Button variant="primary" >Check it out</Button></a>
                             </Card.Body>
                         </Card>
                     </Col>

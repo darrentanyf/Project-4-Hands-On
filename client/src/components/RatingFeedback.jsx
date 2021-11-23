@@ -1,22 +1,37 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import Form from 'react-bootstrap/Form'
+import axios from 'axios';
+import { Authenticate } from "../Authenticate";
+import AuthUser from "../AuthUser"
 
 
-const RatingFeedback = () => {
+const RatingFeedback = (props) => {
+
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(event.currentTarget)
-        console.log(event.currentTarget.floatingSelectGrid1.value)
-        console.log(event.currentTarget.floatingSelectGrid2.value)
-        console.log(event.currentTarget.floatingSelectGrid3.value)
-        console.log(event.currentTarget.floatingTextarea1.value)
-        console.log(event.currentTarget.floatingTextarea2.value)
+        console.log(event.currentTarget.rating.value)
+        console.log(event.currentTarget.clarity.value)
+        console.log(event.currentTarget.success.value)
+        console.log(event.currentTarget.comment.value)
+        console.log(event.currentTarget.difficulties.value)
+
+        axios.post("/api/reviews", {
+            users_id: props.user,
+            guides_id: props.guide,
+            rating: event.currentTarget.rating.value,
+            clarity: event.currentTarget.clarity.value,
+            success: event.currentTarget.success.value,
+            comment: event.currentTarget.comment.value,
+            difficulties: event.currentTarget.difficulties.value,
+        })
     }
 
     return (
@@ -24,7 +39,7 @@ const RatingFeedback = () => {
             <Form onSubmit={handleSubmit}>
             <Row className="g-2">
                     <Col md>
-                        <FloatingLabel controlId="floatingSelectGrid1" label="Works with selects">
+                        <FloatingLabel controlId="rating" label="Works with selects">
                             <Form.Select aria-label="Floating label select example">
                                 <option>How good will you rate this guide?</option>
                                 <option value="1">1</option>
@@ -36,7 +51,7 @@ const RatingFeedback = () => {
                         </FloatingLabel>
                     </Col>
                     <Col md>
-                        <FloatingLabel controlId="floatingSelectGrid2" label="Works with selects">
+                        <FloatingLabel controlId="clarity" label="Works with selects">
                             <Form.Select aria-label="Floating label select example">
                                 <option>How clear was the guide?</option>
                                 <option value="1">1</option>
@@ -48,7 +63,7 @@ const RatingFeedback = () => {
                         </FloatingLabel>
                     </Col>
                     <Col md>
-                        <FloatingLabel controlId="floatingSelectGrid3" label="Works with selects">
+                        <FloatingLabel controlId="success" label="Works with selects">
                             <Form.Select aria-label="Floating label select example">
                                 <option>Was it a success?</option>
                                 <option value="true">Yes</option>
@@ -59,14 +74,14 @@ const RatingFeedback = () => {
                 </Row>
                 <br></br>
                 <Row className="g-2">
-                    <Col md><FloatingLabel controlId="floatingTextarea1" label="Comments">
+                    <Col md><FloatingLabel controlId="comment" label="Comments">
                         <Form.Control
                             as="textarea"
                             placeholder="Leave your feedback here"
                             style={{ height: '100px' }}
                         />
                     </FloatingLabel></Col>
-                    <Col md><FloatingLabel controlId="floatingTextarea2" label="Difficulties Faced">
+                    <Col md><FloatingLabel controlId="difficulties" label="Difficulties Faced">
                         <Form.Control
                             as="textarea"
                             placeholder="Leave your feedback here"

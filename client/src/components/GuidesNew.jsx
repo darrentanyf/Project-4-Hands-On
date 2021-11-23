@@ -20,6 +20,7 @@ const GuidesNew = () => {
     const navigate = useNavigate()
     const [number, setNumber] = useState([1])
     const [image, setImage] = useState([])
+    const [imageFile, setImageFile] = useState([])
     const [steps, setSteps] = useState([])
     const [guides, setGuides] = useState()
 
@@ -57,14 +58,8 @@ const GuidesNew = () => {
         event.preventDefault();
         let stepNumber = event.currentTarget
 
-        // console.log("GUIDE IMAGE", stepNumber.guideImage.value)
-        // console.log("GUIDE TITLE", stepNumber.guideTitle.value)
-        // console.log("GUIDE DESCRIPTION", stepNumber.guideDescription.value)
-        // console.log("GUIDE DIFFICULTY", stepNumber.guideDifficulty.value)
-        // console.log("GUIDE TIME TAKEN", stepNumber.guideTimeTaken.value)
-        // console.log("GUIDE TOOLS REQUIRED", stepNumber.guideToolsRequired.value)
-        // console.log("GUIDE PARTS REQUIRED", stepNumber.guidePartsRequired.value)
-
+        console.log("LENGTH OF IMAGES",image.image1)
+        console.log("LENGTH OF IMAGES",image.image2)
 
 
         for (let i = 1; i < (number.length + 2); i++) {
@@ -72,9 +67,10 @@ const GuidesNew = () => {
             let newTitle = "title" + i
             let newDescription = "description" + i
             console.log("STEPS STEP", "STEP " + i)
-            console.log("STEPS IMAGE", stepNumber[newImage].value)
+            console.log("STEPS IMAGE", image[newImage])
             console.log("STEPS TITLE", stepNumber[newTitle].value)
             console.log("STEPS DESCRIPTION", stepNumber[newDescription].value)
+
 
             steps.push({
                 step: i,
@@ -96,15 +92,6 @@ const GuidesNew = () => {
             setSteps(steps)
             console.log("STEPS SENT", steps)
         }
-        console.log("DELAY GUIDES", guides)
-        // console.log("IS THIS WORKING?")
-        // console.log(stepNumber)
-        // console.log(stepNumber.image1.value)
-        // console.log(stepNumber.title1.value)
-        // console.log(stepNumber.description1.value)
-        // console.log(stepNumber.image2.value)
-        // console.log(stepNumber.title2.value)
-        // console.log(stepNumber.description2.value)
 
      }
 

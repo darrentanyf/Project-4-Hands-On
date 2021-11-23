@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { useParams } from "react-router-dom"
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -8,13 +8,22 @@ import Stack from 'react-bootstrap/Stack'
 import Image from 'react-bootstrap/Image'
 import Navibar from "../components/Navibar"
 import RatingFeedback from "../components/RatingFeedback"
+import { Authenticate } from "../Authenticate";
+import AuthUser from "../AuthUser"
 
 
 const Guides = () => {
     const { id } = useParams()
     const [guide, setGuide] = useState(null)
-    const [steps, setSteps] = useState()
+    const [steps, setSteps] = useState(null)
+    const [reviews, setReviews] = useState([])
     console.log("ID OF GUIDE", id)
+
+    const verify = useContext(AuthUser)
+
+    Authenticate()
+    const auth = verify?.user?.authenticated
+    const userId = verify?.user?.userInfo
 
     useEffect(() => {
         const fetchGuides = async (id) => {
@@ -23,6 +32,7 @@ const Guides = () => {
             console.log("GUIDE and STEPS DATA", data)
             setGuide(data.data.guideData)
             setSteps(data.data.stepData)
+            setReviews(data.data.reviewData)
         }
         fetchGuides(id);
     }, [])
@@ -46,6 +56,7 @@ const Guides = () => {
             {steps ? steps.map((steps) => (
                 <Container>
                     <Row style={{ margin: 20 }} >
+                        <h5>Step {steps?.step}</h5>
                         <Col lg="5">
                             <Image src={steps?.steps_img} alt="" style={{ height: 200, width: 200 }} />
                         </Col>
@@ -59,8 +70,33 @@ const Guides = () => {
                 </Container>
             )) : console.log("MISSING")}
             <h5>Reviews and Feedback</h5>
+            { reviews.map((ele, index)=>(
+
+            <Container style={{"background-color": "#F7F7F7", "border-radius": "3%" }}>
+                <Row className="g-2" style={{ border: "1px solid lightgrey", padding: 20, margin: 25, display: "flex", justifyContent: "center"  }}>
+                    <Col md >
+                    {reviews[index].rating}/5 <br></br> Rating
+                    </Col>
+                    <Col md>
+                    {reviews[index].clarity}/5 <br></br> Clarity
+                    </Col>
+                    <Col md>
+                    {reviews[index].success} <br></br> Succeed
+                    </Col>
+                </Row>
+                <Row className="g-2" style={{ border: "1px solid lightgrey", padding: 20, margin: 25, display: "flex", justifyContent: "center"  }}>
+                <Col md>
+                {reviews[index].comment}
+                    </Col>
+                    <Col md>
+                    {reviews[index].difficulties}
+                    </Col>
+                </Row>
+                </Container>
+                
+            ))}
             <Container>
-                <RatingFeedback />
+                {auth === true ? ( <RatingFeedback user={userId} guide={id}/> ) : ( <p>Need to be logged in to give feedback</p>) }
                 </Container>
         </div>
     )

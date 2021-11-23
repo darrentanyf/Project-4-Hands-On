@@ -12,7 +12,7 @@ CREATE TABLE guides(
     guides_id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description VARCHAR(1000) NOT NULL,
-    categories VARCHAR(255) NOT NULL,
+    categories VARCHAR(255),
     tools_required VARCHAR(255) NOT NULL,
     parts_required VARCHAR(255) NOT NULL,
     difficulty SMALLINT NOT NULL,
