@@ -20,6 +20,7 @@ const GuidesNew = () => {
     const navigate = useNavigate()
     const [number, setNumber] = useState([1])
     const [image, setImage] = useState([])
+    const [steps,setSteps] = useState([])
 
     Authenticate()
     const auth = verify?.user?.authenticated
@@ -39,6 +40,12 @@ const GuidesNew = () => {
 
     }
 
+    const handleDecrease = () => {
+        number.pop()
+        setNumber(number)
+
+    }
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -47,19 +54,19 @@ const GuidesNew = () => {
             let newImage = "image"+i
             let newTitle = "title"+i
             let newDescription = "description"+i
-            console.log(newImage)
+            console.log("GUIDE STEP", "STEP"+ " " +i)
             console.log("GUIDE IMAGE", stepNumber[newImage].value)
             console.log("GUIDE TITLE", stepNumber[newTitle].value)
             console.log("GUIDE DESCRIPTION", stepNumber[newDescription].value)
         }
         // console.log("IS THIS WORKING?")
-        console.log(stepNumber)
-        console.log(stepNumber.image1.value)
-        console.log(stepNumber.title1.value)
-        console.log(stepNumber.description1.value)
-        console.log(stepNumber.image2.value)
-        console.log(stepNumber.title2.value)
-        console.log(stepNumber.description2.value)
+        // console.log(stepNumber)
+        // console.log(stepNumber.image1.value)
+        // console.log(stepNumber.title1.value)
+        // console.log(stepNumber.description1.value)
+        // console.log(stepNumber.image2.value)
+        // console.log(stepNumber.title2.value)
+        // console.log(stepNumber.description2.value)
     }
 
     const handleImage = (event) => {
@@ -72,16 +79,15 @@ const GuidesNew = () => {
         console.log("PREVIEW",image)
     }
 
+
     return (
         <Container>
             <Navibar />
             <Container mb-2>
-                <button onClick={handleIncrease}>Click me</button>
+
                 <Row>
                     <Form onSubmit={handleSubmit}>
-                        <button type="submit" class="btn btn-primary">
-                            Submit
-                        </button>
+                        
                         <p>Step 1</p>
                         <Row className="g-2">
                             <Col md><Form.Group controlId="image1" className="mb-3" onChange={handleImage}>
@@ -135,6 +141,14 @@ const GuidesNew = () => {
                         </Col>
                     </Row>
                 ))}
+                <br></br>
+                <button onClick={handleIncrease} style={{ height: 50, width: 200}}>Add Steps</button>
+                <button onClick={handleDecrease} style={{ height: 50, width: 200}}>Minus Steps</button>
+                <br></br>
+                <br></br>
+                <button type="submit" class="btn btn-primary" style={{ height: 50, width: 200}}>
+                            Submit
+                        </button>
                     </Form>
                 </Row>
             </Container>
