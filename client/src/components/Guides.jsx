@@ -7,6 +7,7 @@ import axios from "axios"
 import Stack from 'react-bootstrap/Stack'
 import Image from 'react-bootstrap/Image'
 import Navibar from "../components/Navibar"
+import RatingFeedback from "../components/RatingFeedback"
 
 
 const Guides = () => {
@@ -26,9 +27,7 @@ const Guides = () => {
         fetchGuides(id);
     }, [])
 
-    console.log("SPECIFIC GUIDE DATA", guide)
-    console.log("SPECIFIC STEP DATA", steps)
-    console.log("SPECIFIC STEP DATA", (Array.isArray(steps)))
+
     return (
         <div>
             <Navibar />
@@ -45,12 +44,12 @@ const Guides = () => {
             </Row>
                 </Container>
             {steps ? steps.map((steps) => (
-                <Container class="w-75 p-3">
+                <Container>
                     <Row style={{ margin: 20 }} >
-                        <Col >
-                            <img src={steps?.steps_img} alt="" style={{ height: 200, width: 200 }} />
+                        <Col lg="5">
+                            <Image src={steps?.steps_img} alt="" style={{ height: 200, width: 200 }} />
                         </Col>
-                        <Col style={{ display: "flex", justifyContent: "center" }}>
+                        <Col lg="6" style={{ display: "flex", justifyContent: "center" }}>
                             <Stack gap={4} style={{ margin: 20 }}>
                                 <div className="bg-light border">{steps?.title}</div>
                                 <div className="bg-light border">{steps?.description}</div>
@@ -59,7 +58,10 @@ const Guides = () => {
                     </Row>
                 </Container>
             )) : console.log("MISSING")}
-
+            <h5>Reviews and Feedback</h5>
+            <Container>
+                <RatingFeedback />
+                </Container>
         </div>
     )
 }

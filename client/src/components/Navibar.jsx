@@ -24,7 +24,7 @@ const Navibar = () => {
         <nav class="navbar navbar-light bg-light justify-content-between">
           <div style={{ display: "flex", justifyContent: "left" }}>
             <a class="nav-link" href="/guides">Discover</a>
-            <a class="nav-link" href="/">Start a guide</a>
+            <a class="nav-link" href="/guides/new">Start a guide</a>
           </div>
 
           <div style={{ display: "flex", justifyContent: "center" }}>
