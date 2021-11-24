@@ -17,7 +17,7 @@ const Home = () => {
                 <Navibar />
             </div>
             <Container>
-                <h3 style={{margin:20}}>Giving everyone the ability to be creative <br></br> with their hands</h3>
+                <h3 style={{margin:20}}>Giving everyone the ability to be creative <br></br> with their hands!</h3>
                 <Carousel />
             </Container>
             <Container>
