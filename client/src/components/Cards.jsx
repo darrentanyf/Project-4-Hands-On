@@ -28,7 +28,7 @@ const Cards = () => {
             <Row >
                 { guides?.map((guide,index)=>(
                         <Col style={{ display: "flex", justifyContent: "center" }}>
-                        <Card bg="light" text="dark"  style={{ width: "19rem" }}>
+                        <Card bg="light" text="dark"  style={{ width: "19rem", margin: 10 }}>
                             <Card.Img variant="top" src={guides[index]?.guides_img} height="180px" />
                             <Card.Body>
                                 <Card.Title>{guides[index]?.name}</Card.Title>
@@ -42,7 +42,7 @@ const Cards = () => {
                 ))}
             </Row>
                 <br></br>
-                <p style={{"border-top": "1px solid lightgrey", margin: 15}}>Hello</p>
+                <p style={{"border-top": "1px solid lightgrey", margin: 15}}>HandsOn Pte Ltd</p>
         </div>
     );
 };

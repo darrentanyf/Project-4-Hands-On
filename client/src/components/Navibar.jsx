@@ -29,7 +29,7 @@ const Navibar = () => {
           </div>
 
           <div style={{ display: "flex", justifyContent: "center" }}>
-          <a class="navbar-brand" href="/">HandsOn</a>
+          <a class="navbar-brand" href="/"><b>HandsOn</b></a>
           </div>
 
          

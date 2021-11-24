@@ -10,6 +10,7 @@ import Navibar from "../components/Navibar"
 import RatingFeedback from "../components/RatingFeedback"
 import { Authenticate } from "../Authenticate";
 import AuthUser from "../AuthUser"
+import Button from "react-bootstrap/Button";
 
 
 const Guides = () => {
@@ -107,9 +108,14 @@ const Guides = () => {
                 
             ))}
             <Container>
-                {auth === true ? ( <Container><br></br>
+            <br></br>
+                {auth === false ? ( <h5 style={{margin:20}}>Need to be logged in to give feedback</h5>)
+                : userId === guide?.users_id ? ( <Button variant="outline-secondary" style={{margin:20}}>Click here if you want to make changes to your guide</Button>)
+                :
+                ( <Container><br></br>
                 <h6>Your Review</h6><br></br>
-                <RatingFeedback user={userId} guide={id}/></Container> ) : ( <p>Need to be logged in to give feedback</p>) }
+                <RatingFeedback user={userId} guide={id}/></Container> )  }
+                <br></br>
                 </Container>
         </div>
     )

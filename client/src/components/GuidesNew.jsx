@@ -138,17 +138,17 @@ const GuidesNew = () => {
       }
 
     return (
-        <Container>
+        <Container >
             <Navibar />
             <Container class="bg-light justify-content-center">
-
                 <Row style={{ diplay:"flex"}}>
                     <Form onSubmit={handleSubmit}>
                     <br/>
                         <h4>Start your new guide </h4>
                         <Row className="g-2" style={{ margin: 20, display: "flex"}}>
-                            <Col md><Form.Group controlId="guideImage" className="" onChange={handleImage} >
-                                <Image src={image.guideImage} alt="" style={{ height: 400, width: 1100, margin: 20}} />
+                            <Col md style={{display: "flex"}}>
+                                <Form.Group controlId="guideImage" onChange={handleImage} >
+                                <Image src={image.guideImage} alt="" style={{ height: 400, width: 1100, margin: 20, display: "flex"}} />
                                 {/* <Form.Label>Upload your image</Form.Label> */}
                                 <Form.Control type="file" style={{ width: 300 }} />
                             </Form.Group>
