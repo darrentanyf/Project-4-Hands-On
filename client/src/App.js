@@ -31,7 +31,7 @@ function App() {
           <Route path="/guides" element={<Discover />}></Route>
           <Route path="/guides/new" element={<GuidesNew />}></Route>
           <Route path="/guides/:id" element={<Guides />}></Route>
-          <Route path="/account" element={<Account />}></Route>
+          <Route path="/users/:id" element={<Account />}></Route>
         </Routes>
         </BrowserRouter>
     </div>

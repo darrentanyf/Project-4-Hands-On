@@ -47,7 +47,7 @@ router.post("/login", async (req, res) => {
 
 //NEW USER SIGNUP
 router.post("/signup", async (req, res) => {
-    console.log("Register Body", req.body);
+    console.log("Register Body", req.body.id);
     const { username, email, password, profileimg } = req.body;
 
     let newPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
@@ -112,4 +112,26 @@ router.post("/authenticate", (req,res)=>{
     }
 
 })
+
+router.get("/:id", async (req, res) => {
+    const { id } = req.params
+    console.log("Is this my userID1111", id)
+    const guides = await pool.query("SELECT * FROM guides WHERE users_id = $1", [
+        id,
+    ])
+    const user = await pool.query("SELECT * FROM users WHERE users_id = $1", [
+        id,
+    ])
+    const reviews = await pool.query("SELECT * FROM reviews WHERE users_id = $1", [
+        id,
+    ])
+    // console.log("SEARCH FOR STEPS", steps.rows)
+    console.log("SEARCH FOR GUIDE", guides.rows)
+    // console.log("SEARCH FOR REVIEWS", reviews.rows)
+    res.json({
+        guideData: guides.rows,
+        reviewData: reviews.rows,
+        userData: user.rows[0]
+    })
+});
 module.exports = router;

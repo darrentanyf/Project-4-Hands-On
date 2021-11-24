@@ -55,15 +55,15 @@ const Guides = () => {
                 </Container>
             {steps ? steps.map((steps) => (
                 <Container >
-                    <Row style={{ margin: 20, padding: 20,  border: "1px solid ", "box-shadow": "1px 2px lightblue", "border-radius": 5 }} className="bg-light border">
+                    <Row style={{ margin: 20, padding: 20,  border: "1px solid ", "box-shadow": "1px 2px lightgrey", "border-radius": 5 }} className="bg-light border">
                         <h5>Step {steps?.step}</h5>
                         <Col lg="5" style={{paddingBottom: 20}}>
-                            <Image src={steps?.steps_img} alt="" style={{ height: 200, width: 200, "border-radius": 5}} />
+                            <Image src={steps?.steps_img} alt="" style={{ height: 200, width: 200, "border-radius": 5, border: "3px solid darkgrey"}} />
                         </Col>
                         <Col lg="6" style={{ display: "flex", justifyContent: "center" }}>
                             <Stack gap={4} style={{ margin: 20 }}>
-                                <div >TITLE: {steps?.title}</div>
-                                <div >DESCRIPTION: {steps?.description}</div>
+                                <div ><b>Title</b><br></br>{steps?.title}</div>
+                                <div ><b>Description</b><br></br>{steps?.description}</div>
                             </Stack>
                         </Col>
                             

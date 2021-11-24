@@ -9,6 +9,7 @@ const Navibar = () => {
 
   Authenticate()
   const auth = verify?.user?.authenticated
+  const userId = verify?.user?.userInfo
   console.log("CONTEXT 2", verify)
   
 
@@ -35,7 +36,7 @@ const Navibar = () => {
             { auth === true ? 
             (
               <div style={{ display: "flex", justifyContent: "right" }}>
-                <a class="nav-link" href="/Account">My Account</a>
+                <a class="nav-link" href={`/users/${userId}`}>My Account</a>
               <a class="nav-link" href="/" onClick={handleLogout}>Logout</a>
               </div>
 

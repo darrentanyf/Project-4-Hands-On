@@ -6,12 +6,13 @@ import Container from "react-bootstrap/Container";
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import Form from 'react-bootstrap/Form'
 import axios from 'axios';
+import { useNavigate } from "react-router-dom"
 import { Authenticate } from "../Authenticate";
 import AuthUser from "../AuthUser"
 
 
 const RatingFeedback = (props) => {
-
+    const navigate = useNavigate()
 
 
     const handleSubmit = (event) => {
@@ -32,6 +33,11 @@ const RatingFeedback = (props) => {
             comment: event.currentTarget.comment.value,
             difficulties: event.currentTarget.difficulties.value,
         })
+        .then((response) => {
+            console.log(response);
+            navigate('/')
+
+        });
     }
 
     return (
