@@ -1,10 +1,15 @@
 const Pool = require("pg").Pool
 const pool = new Pool({
-    user:"desertkrieg",
-    password: "",
-    host: "localhost",
+    user: process.env.POSTGRESUSER,
+    password: process.env.POSTGRESPW,
+    host: process.env.POSTGRESHOST,
     port: 5432,
-    database: "homediy"
+    database: process.env.POSTGRESDATABASE,
+
+    ssl: {
+        required: true,
+        rejectUnauthorized: false,
+    }
 });
 
 module.exports = pool;
