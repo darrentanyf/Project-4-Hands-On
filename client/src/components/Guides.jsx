@@ -54,16 +54,16 @@ const Guides = () => {
             </Row>
                 </Container>
             {steps ? steps.map((steps) => (
-                <Container>
-                    <Row style={{ margin: 20 }} >
+                <Container >
+                    <Row style={{ margin: 20, padding: 20 }} className="bg-light border">
                         <h5>Step {steps?.step}</h5>
-                        <Col lg="5">
-                            <Image src={steps?.steps_img} alt="" style={{ height: 200, width: 200 }} />
+                        <Col lg="5" >
+                            <Image src={steps?.steps_img} alt="" style={{ height: 200, width: 200  }} />
                         </Col>
                         <Col lg="6" style={{ display: "flex", justifyContent: "center" }}>
                             <Stack gap={4} style={{ margin: 20 }}>
-                                <div className="bg-light border">{steps?.title}</div>
-                                <div className="bg-light border">{steps?.description}</div>
+                                <div >TITLE: {steps?.title}</div>
+                                <div >DESCRIPTION: {steps?.description}</div>
                             </Stack>
                         </Col>
                     </Row>
@@ -72,8 +72,10 @@ const Guides = () => {
             <h5>Reviews and Feedback</h5>
             { reviews.map((ele, index)=>(
 
-            <Container style={{"background-color": "#F7F7F7", "border-radius": "3%" }}>
-                <Row className="g-2" style={{ border: "1px solid lightgrey", padding: 20, margin: 25, display: "flex", justifyContent: "center"  }}>
+            <Container >
+                <br></br>
+                <h6>Review {index+1}</h6>
+                <Row className="g-2" style={{ border: "2px solid lightgreen", padding: 20, margin: 25, display: "flex", justifyContent: "center"  }}>
                     <Col md >
                     {reviews[index].rating}/5 <br></br> Rating
                     </Col>
@@ -84,7 +86,7 @@ const Guides = () => {
                     {reviews[index].success} <br></br> Succeed
                     </Col>
                 </Row>
-                <Row className="g-2" style={{ border: "1px solid lightgrey", padding: 20, margin: 25, display: "flex", justifyContent: "center"  }}>
+                <Row className="g-2" style={{ border: "2px solid lightgreen", padding: 20, margin: 25, display: "flex", justifyContent: "center"  }}>
                 <Col md>
                 {reviews[index].comment}
                     </Col>
@@ -96,7 +98,9 @@ const Guides = () => {
                 
             ))}
             <Container>
-                {auth === true ? ( <RatingFeedback user={userId} guide={id}/> ) : ( <p>Need to be logged in to give feedback</p>) }
+                {auth === true ? ( <Container><br></br>
+                <h6>Your Review</h6><br></br>
+                <RatingFeedback user={userId} guide={id}/></Container> ) : ( <p>Need to be logged in to give feedback</p>) }
                 </Container>
         </div>
     )

@@ -14,6 +14,8 @@ import { useNavigate } from "react-router-dom"
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import Form from 'react-bootstrap/Form'
 
+require("dotenv").config()
+
 const GuidesNew = () => {
 
     const verify = useContext(AuthUser)
@@ -23,6 +25,7 @@ const GuidesNew = () => {
     const [imageFile, setImageFile] = useState([])
     const [steps, setSteps] = useState([])
     const [guides, setGuides] = useState()
+    const [guideId, setGuideId] = useState()
 
 
     Authenticate()
@@ -54,7 +57,7 @@ const GuidesNew = () => {
     }
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         let stepNumber = event.currentTarget
 
@@ -68,6 +71,9 @@ const GuidesNew = () => {
             let newDescription = "description" + i
             console.log("STEPS STEP", "STEP " + i)
             console.log("STEPS IMAGE", image[newImage])
+
+            const res = await uploadFile(imageFile[newImage])
+            console.log("IS THIS THE CLOUDINARY LINK?", res)
             console.log("STEPS TITLE", stepNumber[newTitle].value)
             console.log("STEPS DESCRIPTION", stepNumber[newDescription].value)
 
@@ -76,23 +82,25 @@ const GuidesNew = () => {
                 step: i,
                 title: stepNumber[newTitle].value,
                 description: stepNumber[newDescription].value,
-                steps_img: stepNumber[newImage].value
+                steps_img: res
             })
 
-            setGuides({
-                users_id: userId,
-                name: stepNumber.guideTitle.value,
-                description:stepNumber.guideDescription.value,
-                tools_required: stepNumber.guideToolsRequired.value,
-                parts_required: stepNumber.guidePartsRequired.value,
-                difficulty: stepNumber.guideDifficulty.value,
-                time_taken: stepNumber.guideTimeTaken.value,
-                guides_img: stepNumber.guideImage.value
-            })
             setSteps(steps)
             console.log("STEPS SENT", steps)
         }
-
+        console.log("IS THIS THE GUIDE IMAGE", imageFile.guideImage)
+        const guideFile = await uploadFile(imageFile.guideImage)
+        setGuides({
+            users_id: userId,
+            name: stepNumber.guideTitle.value,
+            description:stepNumber.guideDescription.value,
+            tools_required: stepNumber.guideToolsRequired.value,
+            parts_required: stepNumber.guidePartsRequired.value,
+            difficulty: stepNumber.guideDifficulty.value,
+            time_taken: stepNumber.guideTimeTaken.value,
+            guides_img: guideFile
+        })
+        navigate("/")
      }
 
     useEffect(()=> {
@@ -100,21 +108,34 @@ const GuidesNew = () => {
             const url = "/api/guides/new";
             const data = await axios.post(url, {newGuide: guides, newSteps: steps});
             console.log("RESPONSE GUIDE NEW", data)
-
+            setGuideId(data.data.newGuideId)
         }
         sendNewGuide()
     },[guides])
 
     const handleImage = (event) => {
         event.preventDefault();
-        console.log(event.target?.files[0])
+        console.log("IS THIS THE BLOB?",event.target?.files[0])
         console.log(event.target.id)
         let preview = URL.createObjectURL(event.target?.files[0])
         image[event.target.id] = preview
+        imageFile[event.target.id] = event.target?.files[0]
         setImage(image)
+        setImageFile(imageFile)
+        
         console.log("PREVIEW", image)
+        console.log(" IMAGEFILE PREVIEW", imageFile)
     }
 
+    const uploadFile = async (file) => {
+        const formData = new FormData()
+        console.log("IS THIS FILE A BLOB", file)
+        formData.append('file', file)
+        formData.append('upload_preset', process.env.CLOUDINARY_API ?? 'qncyjvkz')
+    
+        const res = await axios.post('https://api.cloudinary.com/v1_1/desertkrieg/image/upload', formData)
+        return res.data.secure_url 
+      }
 
     return (
         <Container>
@@ -140,6 +161,7 @@ const GuidesNew = () => {
                                         as="textarea"
                                         placeholder="Leave your feedback here"
                                         style={{ height: '100px'}}
+                                        required
                                     />
                                 </FloatingLabel>
                             </Col>
@@ -149,15 +171,17 @@ const GuidesNew = () => {
                                         as="textarea"
                                         placeholder="Leave your feedback here"
                                         style={{ height: '100px'}}
+                                        required
                                     />
                                 </FloatingLabel>
                             </Col>
                         </Row>
                         <Row className="g-2" style={{ margin: 20, display: "flex", justifycontent: "center" }}>
                             <Col md>
-                                <FloatingLabel controlId="guideDifficulty" label="Works with selects">
-                                    <Form.Select aria-label="Floating label select example">
-                                        <option>How difficult is this guide?</option>
+                                <FloatingLabel controlId="guideDifficulty" label="Works with selects" required>
+                                    <Form.Select aria-label="Floating label select example" required>
+                                    <option selected disabled value="">How difficult is this guide?</option>
+                                        
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -168,8 +192,8 @@ const GuidesNew = () => {
                             </Col>
                             <Col md>
                                 <FloatingLabel controlId="guideTimeTaken" label="Works with selects">
-                                    <Form.Select aria-label="Floating label select example">
-                                        <option>How long did you take?</option>
+                                    <Form.Select aria-label="Floating label select example" required>
+                                    <option selected disabled value="">How long did you take?</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -193,6 +217,7 @@ const GuidesNew = () => {
                                     <Form.Control
                                         as="textarea"
                                         placeholder="Leave your feedback here"
+                                        required
                                     // style={{ height: '100px', width: '800px' }}
                                     />
                                 </FloatingLabel>
@@ -202,6 +227,7 @@ const GuidesNew = () => {
                                     <Form.Control
                                         as="textarea"
                                         placeholder="Leave your feedback here"
+                                        required
                                     // style={{ height: '100px', width: '800px' }}
                                     />
                                 </FloatingLabel>
@@ -224,6 +250,7 @@ const GuidesNew = () => {
                                         as="textarea"
                                         placeholder="Leave your feedback here"
                                         style={{ height: '100px' }}
+                                        required
                                     />
                                 </FloatingLabel>
                                 <br/>
@@ -232,6 +259,7 @@ const GuidesNew = () => {
                                         as="textarea"
                                         placeholder="Leave your feedback here"
                                         style={{ height: '100px' }}
+                                        required
                                     />
                                 </FloatingLabel>
                             </Col>
@@ -252,6 +280,7 @@ const GuidesNew = () => {
                                             as="textarea"
                                             placeholder="Leave your feedback here"
                                             style={{ height: '100px' }}
+                                            required
                                         />
                                     </FloatingLabel>
                                     <br/>
@@ -260,6 +289,7 @@ const GuidesNew = () => {
                                             as="textarea"
                                             placeholder="Leave your feedback here"
                                             style={{ height: '100px' }}
+                                            required
                                         />
                                     </FloatingLabel>
                                 </Col>

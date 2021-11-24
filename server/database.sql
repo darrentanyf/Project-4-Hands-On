@@ -55,3 +55,8 @@ INSERT INTO guides ( name, description, categories, tools_required, parts_requir
 ('Best Computer Desk Hack with Ikea ', 'Just by using Ikea parts, you can customize the coolest and funtional computer desk using different parts from ikea. You wont compromise on quality and save a fair amount as compared to buying a computer desk outside', 'Home','Screwdriver, Allen Key', 'Ikea Kitchen Counter Top, Ikea Desk Legs, Ikea Alex Drawers', 2, 3)
 
 UPDATE guides SET users_id = '02817632-c9f8-4dcb-8670-8d28bdf3affa' WHERE guides_id = '1196217e-8449-4359-a1df-4a15c1608365'
+
+INSER INTO steps ( step, title, description, steps_img) VALUES
+(1, 'Pour Hot Water into Toilet Bowl', 'Prepare at least 2 jugs of hot water and slowly pour them into the toilet bowl, especially areas that have stains that are hard to come off','https://i.imgur.com/kSGvWop.jpeg')
+(2, 'Apply a layer of detergent', 'Use any kind of toilet detergent and apply a layer over the whole area. Let it rest for at least 5 mins','https://i.imgur.com/kSGvWop.jpeg')
+(3, 'Use a Course Scrub', 'Lastly, use a course scrub and scrub throughly over the whole toilet bowl, focusing on the areas that have those spesky stains. They should come right off.','https://i.imgur.com/yZ0LzP3.jpeg')

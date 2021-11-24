@@ -1,15 +1,43 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Carousel from 'react-bootstrap/Carousel'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import axios from "axios"
 
-const carousel = () => {
+const Carouselimage = () => {
+    const [guides, setGuides] = useState([])
+
+    useEffect(() => {
+        const fetchGuides = async () => {
+            const url = "/api/guides";
+            const data = await axios.get(url);
+            console.log("DATA", data.data)
+            console.log(data.data.length)
+            setGuides([data.data[0],data.data[1],data.data[2]])
+
+        }
+        fetchGuides()
+    }, [])
 
     return (
         <div>
             <Row style={{ padding: 20 }}>
                 <Carousel >
-                    <Carousel.Item>
+                    { guides?.map((guid,index)=>(
+                                            <Carousel.Item>
+                                            <img
+                                                className="d-block w-100"
+                                                src={guides[index].guides_img}
+                                                alt="First slide"
+                                                height="480px"
+                                            />
+                                            <Carousel.Caption>
+                                                {/* <h3></h3> */}
+                                                <h5>{guides[index].name}</h5>
+                                            </Carousel.Caption>
+                                        </Carousel.Item>
+                    ))}
+                    {/* <Carousel.Item>
                         <img
                             className="d-block w-100"
                             src="https://images.unsplash.com/photo-1591382696684-38c427c7547a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
@@ -46,7 +74,7 @@ const carousel = () => {
                             <h3>Guide 3</h3>
                             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                         </Carousel.Caption>
-                    </Carousel.Item>
+                    </Carousel.Item> */}
                 </Carousel>
             </Row>
         </div>
@@ -57,4 +85,4 @@ const carousel = () => {
 
 }
 
-export default carousel
+export default Carouselimage

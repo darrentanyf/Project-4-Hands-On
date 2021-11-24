@@ -18,6 +18,10 @@ app.use("/api/reviews", reviewsController)
 app.use("/api/steps", stepsController)
 
 //ROUTES
+app.get('*', (req,res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+
 app.post("/test",async (req,res) => {
     try {
         const { username, password, email, profile_img } = req.body

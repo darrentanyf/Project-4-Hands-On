@@ -55,7 +55,7 @@ router.post("/new", async (req, res) => {
                 [newSteps[i]?.step, newSteps[i]?.title ,newSteps[i]?.description ,newSteps[i]?.steps_img, newGuideId]
             )
         }
-        
+
     }
 
 

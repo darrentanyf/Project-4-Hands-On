@@ -25,22 +25,24 @@ const Cards = () => {
 
     return (
         <div>
-            <Row>
+            <Row >
                 { guides?.map((guide,index)=>(
                         <Col style={{ display: "flex", justifyContent: "center" }}>
-                        <Card style={{ width: "19rem" }}>
+                        <Card bg="light" text="dark"  style={{ width: "19rem" }}>
                             <Card.Img variant="top" src={guides[index]?.guides_img} height="180px" />
                             <Card.Body>
                                 <Card.Title>{guides[index]?.name}</Card.Title>
                                 <Card.Text>
                                     {guides[index]?.description.slice(0,99)+"..."}
                                 </Card.Text>
-                                <a href={`/guides/${guides[index]?.guides_id}`}><Button variant="primary" >Check it out</Button></a>
+                                <a href={`/guides/${guides[index]?.guides_id}`}><Button variant="outline-dark" >Check it out</Button></a>
                             </Card.Body>
                         </Card>
                     </Col>
                 ))}
             </Row>
+                <br></br>
+                <p style={{"border-top": "1px solid lightgrey", margin: 15}}>Hello</p>
         </div>
     );
 };

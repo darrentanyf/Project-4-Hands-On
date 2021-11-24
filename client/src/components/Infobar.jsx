@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container'
 const Infobar = () => {
     return (
         <Container>
-            <Row style={{ border: "1px solid lightgrey", padding: 20, margin: 25 }}>
+            <Row style={{ border: "1px solid ", padding: 20, margin: 25, "box-shadow": "1px 2px lightgrey", "border-radius": 5 }}>
                 <Col>25K <br></br>Steps Created</Col>
                 <Col>8000 <br></br> Reviews</Col>
                 <Col>11K <br></br>Successes</Col>
