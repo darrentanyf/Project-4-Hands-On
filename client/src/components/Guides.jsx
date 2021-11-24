@@ -42,8 +42,8 @@ const Guides = () => {
         <div>
             <Navibar />
             <Container>
-                <Row>
-                    <img src={guide?.guides_img} alt="" style={{ height: 400, margin: 20 }}fluid/>
+                <Row >
+                    <img src={guide?.guides_img} alt="" style={{ height: 400, margin: 20, display: "flex", justifycontent: "center", }} fluid/>
                 </Row>
             </Container>
             <Container>
@@ -55,10 +55,10 @@ const Guides = () => {
                 </Container>
             {steps ? steps.map((steps) => (
                 <Container >
-                    <Row style={{ margin: 20, padding: 20 }} className="bg-light border">
+                    <Row style={{ margin: 20, padding: 20,  border: "1px solid ", "box-shadow": "1px 2px lightblue", "border-radius": 5 }} className="bg-light border">
                         <h5>Step {steps?.step}</h5>
-                        <Col lg="5" >
-                            <Image src={steps?.steps_img} alt="" style={{ height: 200, width: 200  }} />
+                        <Col lg="5" style={{paddingBottom: 20}}>
+                            <Image src={steps?.steps_img} alt="" style={{ height: 200, width: 200, "border-radius": 5}} />
                         </Col>
                         <Col lg="6" style={{ display: "flex", justifyContent: "center" }}>
                             <Stack gap={4} style={{ margin: 20 }}>
@@ -66,31 +66,40 @@ const Guides = () => {
                                 <div >DESCRIPTION: {steps?.description}</div>
                             </Stack>
                         </Col>
+                            
                     </Row>
                 </Container>
             )) : console.log("MISSING")}
             <h5>Reviews and Feedback</h5>
             { reviews.map((ele, index)=>(
 
-            <Container >
+            <Container sm style={{ border: "1px solid lightgrey", width:500, "box-shadow": "lightgrey 0px 5px 15px"}}>
                 <br></br>
                 <h6>Review {index+1}</h6>
-                <Row className="g-2" style={{ border: "2px solid lightgreen", padding: 20, margin: 25, display: "flex", justifyContent: "center"  }}>
-                    <Col md >
-                    {reviews[index].rating}/5 <br></br> Rating
+                <Row className="g-2" style={{ display: "flex", justifyContent: "center"}}>
+                    <Col sm></Col>
+                    <Col sm >
+                    {reviews[index].rating}/5 <br></br> <h5>Rating</h5>
                     </Col>
-                    <Col md>
-                    {reviews[index].clarity}/5 <br></br> Clarity
+                    <Col sm>
+                    {reviews[index].clarity}/5 <br></br> <h5>Clarity</h5>
                     </Col>
-                    <Col md>
-                    {reviews[index].success} <br></br> Succeed
-                    </Col>
+                        { reviews[index].success === true ? 
+                    <Col sm> It was a <br></br><h5>Success</h5> </Col> : <Col md> <br></br><h5>Did Not Succeed </h5></Col> 
+                }
+                    <Col sm></Col>
                 </Row>
-                <Row className="g-2" style={{ border: "2px solid lightgreen", padding: 20, margin: 25, display: "flex", justifyContent: "center"  }}>
-                <Col md>
+                <Row style={{ display: "flex", justifyContent: "center",marginTop:5 }}>
+                <Col style={{"box-sizing": "content-box", width:500, paddingLeft: 80, paddingRight: 80}}>
+                <b>Comments & Feedback</b>
+                    <br></br>
                 {reviews[index].comment}
-                    </Col>
-                    <Col md>
+                </Col>
+                </Row >
+                <Row style={{ display: "flex", justifyContent: "center", marginTop:5, paddingBottom:30}}>
+                <Col style={{"box-sizing": "content-box", width:500, paddingLeft: 80, paddingRight: 80, }}>
+                    <b>Difficulties Faced</b>
+                    <br></br>
                     {reviews[index].difficulties}
                     </Col>
                 </Row>

@@ -32,6 +32,7 @@ CREATE TABLE reviews(
     users_id uuid REFERENCES users (users_id),
     guides_id uuid REFERENCES guides (guides_id)
 )
+
 CREATE TABLE steps(
     steps_id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     step SMALLINT NOT NULL,
