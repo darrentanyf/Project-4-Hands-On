@@ -10,6 +10,7 @@ const reviewsController = require("./controllers/reviews")
 const stepsController = require("./controllers/steps")
 
 //MIDDLEWARE
+app.use(express.static(path.join(__dirname, "./client/build")));
 app.use(cors());
 app.use(express.json())
 app.use("/api/users", usersController)
@@ -18,9 +19,9 @@ app.use("/api/reviews", reviewsController)
 app.use("/api/steps", stepsController)
 
 //ROUTES
-app.get('*', (req,res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  })
+app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/build", "index.html"));
+  });
 
 app.post("/test",async (req,res) => {
     try {
