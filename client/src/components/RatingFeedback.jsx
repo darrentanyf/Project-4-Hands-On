@@ -35,7 +35,7 @@ const RatingFeedback = (props) => {
         })
         .then((response) => {
             console.log(response);
-            navigate('/')
+            window.history.back()
 
         });
     }

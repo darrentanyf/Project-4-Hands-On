@@ -134,4 +134,11 @@ router.get("/:id", async (req, res) => {
         userData: user.rows[0]
     })
 });
+
+//NEW USER SIGNUP
+// router.post("/update", async (req, res) => {
+//     console.log("New Image", req.body);
+
+//     });
+
 module.exports = router;

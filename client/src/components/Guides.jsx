@@ -85,7 +85,7 @@ const Guides = () => {
                     {reviews[index].clarity}/5 <br></br> <h5>Clarity</h5>
                     </Col>
                         { reviews[index].success === true ? 
-                    <Col sm> It was a <br></br><h5>Success</h5> </Col> : <Col md> <br></br><h5>Did Not Succeed </h5></Col> 
+                    <Col sm> It was a <br></br><h5>Success</h5> </Col> : <Col md> Did Not <br></br><h5>Succeed </h5></Col> 
                 }
                     <Col sm></Col>
                 </Row>
