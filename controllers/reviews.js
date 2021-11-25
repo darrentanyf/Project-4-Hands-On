@@ -12,7 +12,21 @@ router.post("/", async (req, res) => {
     )
 });
 
-router.get("/", async (req, res) => {
-    
+router.get("/info", async (req, res) => {
+    const guidesNumber = await pool.query("SELECT * FROM guides")
+    const stepsNumber = await pool.query("SELECT * FROM steps")
+    const successNumber = await pool.query("SELECT success FROM reviews WHERE success = $1", [true])
+
+    // console.log("gNum", guidesNumber?.rowCount);
+    // console.log("stNum", stepsNumber?.rowCount);
+    // console.log("suNum", successNumber?.rowCount);
+
+    res.json({
+        guidesNo: guidesNumber?.rowCount,
+        stepsNo: stepsNumber?.rowCount,
+        successNo: successNumber?.rowCount
+    })
+
 });
+
 module.exports = router;

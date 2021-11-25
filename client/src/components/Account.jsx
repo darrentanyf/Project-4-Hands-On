@@ -112,7 +112,7 @@ const Account = () => {
                 <Row style={{ display: "flex" }}>
                     <Form onSubmit="{handleSubmit}" >
                         <Form.Label>Upload Your Profile Picture</Form.Label>
-                        <Form.Group controlId="guideImage" className="" onChange={handleImage} style={{ display: "flex" }}>
+                        <Form.Group controlId="guideImage" className="" onChange={handleImage} style={{ display: "flex", justifyContent: "center" }}>
                             <Form.Control type="file" style={{ width: 300 }}  />
                         </Form.Group>
                     </Form>

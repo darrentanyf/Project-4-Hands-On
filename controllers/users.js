@@ -48,7 +48,7 @@ router.post("/login", async (req, res) => {
 //NEW USER SIGNUP
 router.post("/signup", async (req, res) => {
     console.log("Register Body", req.body.id);
-    const { username, email, password } = req.body;
+    const { username, email, password} = req.body;
 
     let newPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
@@ -112,6 +112,8 @@ router.post("/authenticate", (req,res)=>{
     }
 
 })
+
+
 
 router.get("/:id", async (req, res) => {
     const { id } = req.params
