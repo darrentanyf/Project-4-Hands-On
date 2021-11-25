@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react"
+import Navibar from "./Navibar"
 
 export default function Login() {
     const [Auth, setAuth] = useState(0)
@@ -32,8 +33,8 @@ export default function Login() {
 
     return (
         <div>
-            <h1>Login</h1>
-
+            <Navibar />
+            <h2>Login</h2>
             <div class="container col-md-4">
                 <form onSubmit={handleSubmit}>
                     <div class="form-group">

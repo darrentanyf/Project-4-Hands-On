@@ -1,6 +1,7 @@
 import React from "react"
 import axios from "axios"
 import { useState } from "react"
+import Navibar from "./Navibar"
 
 
 
@@ -55,7 +56,8 @@ export default function Signup() {
 
     return (
         <div>
-            <h1>Sign Up</h1>
+            <Navibar />
+            <h2>Sign Up</h2>
             <div class="container col-md-4">
                 <form onSubmit={handleSubmit}>
                     <div class="form-group">
@@ -85,7 +87,7 @@ export default function Signup() {
                             placeholder="Enter Password"
                         />
                     </div>
-                    <div class="form-group">
+                    {/* <div class="form-group">
                         <label for="profileimg">Profile Image</label>
                         <input
                             type="text"
@@ -93,7 +95,7 @@ export default function Signup() {
                             id="profileimg"
                             placeholder="Upload Profile Image"
                         />
-                    </div>
+                    </div> */}
                     {/* <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Upload</span>
