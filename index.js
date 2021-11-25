@@ -24,16 +24,6 @@ app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname, "./client/build", "index.html"));
   });
 
-app.post("/test",async (req,res) => {
-    try {
-        const { username, password, email, profile_img } = req.body
-        const newUser = await pool.query("INSERT INTO users (username, password, email, profile_img) VALUES($1,$2,$3,$4)", [username, password, email, profile_img]
-        );
-        res.json(newUser)
-    } catch(err) {
-        console.log(err.message);
-    }
-})
 
 
 //LISTEN

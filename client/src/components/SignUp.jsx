@@ -18,10 +18,10 @@ export default function Signup() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log("USERNAME", event.currentTarget.username.value);
-        console.log("EMAIL", event.currentTarget.email.value);
-        console.log("Password", event.currentTarget.password.value);
-        console.log("profileimg", event.currentTarget.profileimg.value);
+        // console.log("USERNAME", event.currentTarget.username.value);
+        // console.log("EMAIL", event.currentTarget.email.value);
+        // console.log("Password", event.currentTarget.password.value);
+        // console.log("profileimg", event.currentTarget.profileimg.value);
         // const data = new FormData(event.currentTarget);
 
         axios
@@ -29,7 +29,7 @@ export default function Signup() {
                 username: event.currentTarget.username.value,
                 email: event.currentTarget.email.value,
                 password: event.currentTarget.password.value,
-                profileimg: event.currentTarget.profileimg.value,
+                // profileimg: event.currentTarget.profileimg.value,
             })
             .then((response) => {
 

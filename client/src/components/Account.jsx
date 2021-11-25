@@ -65,18 +65,20 @@ const Account = () => {
         console.log(event.target.id)
         let preview = URL.createObjectURL(event.target?.files[0])
         setImage(preview)
-        // const res = await uploadFile(event.target?.files[0])
-        // console.log("RESRESRERS",res)
-        // setImageLink(res)
+        const res = await uploadFile(event.target?.files[0])
+        console.log("RESRESRERS",res)
+        setImageLink(res)
+        console.log("WHAT IS THIS TIMAGE", user?.profile_img)
 
-        // axios
-        //     .post("/api/users/update", {
-        //         users_id: userId,
-        //         profile_img: res
-        //     })
-        //     .then ((response)=>{
-        //         console.log(response)
-        //     })
+        console.log("BEBFORE POSTING")
+        axios
+            .post("/api/users/update", {
+                users_id: userId,
+                profile_img: res
+            })
+            .then ((response)=>{
+                console.log("PROFILE UPDATED",response)
+            })
 
     }
 
@@ -97,9 +99,9 @@ const Account = () => {
             <Container class="navbar navbar-light bg-light justify-content-between">
                 <Row style={{ display: "flex", justifyContent: "center" }}>
                     { image ? 
-                    <Image src={image} style={{ width: 270, height: 250, "border-radius": "50%" }} />
-                    :
-                    <Image src="https://images.unsplash.com/photo-1606937295547-bc0f668595b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" style={{ width: 270, height: 250, "border-radius": "50%" }} />
+                    (<Image src={image} style={{ width: 270, height: 250, "border-radius": "50%" }} />)
+                    : user?.profile_img === null? ( <Image src="https://www.pngkey.com/png/full/107-1072091_computer-icons-user-profile-facebook-instagram-instagram-profile.png" style={{ width: 270, height: 250, "border-radius": "50%" }} /> )
+                    : (<Image src={user?.profile_img} style={{ width: 270, height: 250, "border-radius": "50%" }} />)
                 }
                 </Row>
                 <Row style={{ margin: 20 }}>

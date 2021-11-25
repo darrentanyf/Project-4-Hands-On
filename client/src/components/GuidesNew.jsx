@@ -146,7 +146,7 @@ const GuidesNew = () => {
                     <br/>
                         <h4>Start your new guide </h4>
                         <Row className="g-2" style={{ margin: 20, display: "flex"}}>
-                            <Col md style={{display: "flex"}}>
+                            <Col md style={{display: "flex", justifyContent: "center"}}>
                                 <Form.Group controlId="guideImage" onChange={handleImage} >
                                 <Image src={image.guideImage} alt="" style={{ height: 400, width: 1100, margin: 20, display: "flex"}} />
                                 {/* <Form.Label>Upload your image</Form.Label> */}

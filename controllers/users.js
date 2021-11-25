@@ -48,7 +48,7 @@ router.post("/login", async (req, res) => {
 //NEW USER SIGNUP
 router.post("/signup", async (req, res) => {
     console.log("Register Body", req.body.id);
-    const { username, email, password, profileimg } = req.body;
+    const { username, email, password } = req.body;
 
     let newPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
@@ -81,8 +81,8 @@ router.post("/signup", async (req, res) => {
     // const newPassword = bcrypt.hash(password, bcrypt.genSalt(10));
 
     let newUser = await pool.query(
-        "INSERT INTO users (username, users_password, email, profile_img) VALUES ($1,$2,$3,$4) RETURNING *",
-        [username, newPassword, email, profileimg]
+        "INSERT INTO users (username, users_password, email) VALUES ($1,$2,$3) RETURNING *",
+        [username, newPassword, email]
     );
 
     const jwtToken = jwtGenerator(newUser.rows[0].users_id);
@@ -135,10 +135,21 @@ router.get("/:id", async (req, res) => {
     })
 });
 
-//NEW USER SIGNUP
-// router.post("/update", async (req, res) => {
-//     console.log("New Image", req.body);
+// NEW USER SIGNUP
+router.post("/update", async (req, res) => {
+    console.log("IS THIS WORKING PROFILE")
+    console.log("New Image", req.body);
+    const { users_id, profile_img } = req.body
 
-//     });
+    await pool.query("UPDATE users SET profile_img = $1 WHERE users_id = $2", [
+        profile_img, users_id
+    ])
+    res.json({
+        message: "Your profile image has updated!"
+    })
+
+
+
+    });
 
 module.exports = router;
