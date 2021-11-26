@@ -19,5 +19,10 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "cypress": "^9.1.0",
+    "cypress-file-upload": "^5.0.8",
+    "har-validator": "^5.1.5"
   }
 }

@@ -43,7 +43,7 @@ const Account = () => {
 
     useEffect(() => {
         const fetchDetails = async (id) => {
-            console.log("Is this useEffect Working")
+            console.log("Checking if this useEffect is Working")
             const Url = `/api/users/${id}`;
             const data = await axios.get(Url);
             console.log("My Guides and Personal Info", data)
@@ -61,16 +61,15 @@ const Account = () => {
 
     const handleImage = async (event) => {
         event.preventDefault();
-        console.log("IS THIS THE BLOB?",event.target?.files[0])
+        console.log("imageFile",event.target?.files[0])
         console.log(event.target.id)
         let preview = URL.createObjectURL(event.target?.files[0])
         setImage(preview)
         const res = await uploadFile(event.target?.files[0])
-        console.log("RESRESRERS",res)
+        console.log("Res",res)
         setImageLink(res)
-        console.log("WHAT IS THIS TIMAGE", user?.profile_img)
+        console.log("Whats the Image", user?.profile_img)
 
-        console.log("BEBFORE POSTING")
         axios
             .post("/api/users/update", {
                 users_id: userId,
@@ -99,9 +98,9 @@ const Account = () => {
             <Container class="navbar navbar-light bg-light justify-content-between">
                 <Row style={{ display: "flex", justifyContent: "center" }}>
                     { image ? 
-                    (<Image src={image} style={{ width: 270, height: 250, "border-radius": "50%" }} />)
-                    : user?.profile_img === null? ( <Image src="https://www.pngkey.com/png/full/107-1072091_computer-icons-user-profile-facebook-instagram-instagram-profile.png" style={{ width: 270, height: 250, "border-radius": "50%" }} /> )
-                    : (<Image src={user?.profile_img} style={{ width: 270, height: 250, "border-radius": "50%" }} />)
+                    (<Image src={image} style={{ width: 270, height: 250, "border-radius": "50%" }} id="profileImage"/>)
+                    : user?.profile_img === null? ( <Image src="https://www.pngkey.com/png/full/107-1072091_computer-icons-user-profile-facebook-instagram-instagram-profile.png" style={{ width: 270, height: 250, "border-radius": "50%" }} id="profileImage"/> )
+                    : (<Image src={user?.profile_img} style={{ width: 270, height: 250, "border-radius": "50%" }} id="profileImage"/>)
                 }
                 </Row>
                 <Row style={{ margin: 20 }}>
@@ -147,12 +146,12 @@ const Account = () => {
             </Container >
             <Container class="bg-light justify-content-center" style={{ marginTop: 20 }}>
                 <Row style={{ diplay: "flex" }}>
-                    <h5>Your Reviews/Feedbacks</h5>
+                    <h5 id="reviewTitle">Your Reviews/Feedbacks</h5>
                     <br></br>
                     {reviews?.map((ele, index) => (
                         <Card style={{ width: '16rem', margin: 10 }}>
                             <Card.Header>Title</Card.Header>
-                            <ListGroup variant="flush">
+                            <ListGroup variant="flush" >
                                 <ListGroup.Item><b>Rating:</b> {reviews[index]?.rating}/5</ListGroup.Item>
                                 <ListGroup.Item><b>Comment:</b> {reviews[index]?.comment}</ListGroup.Item>
                                 <ListGroup.Item><b>Difficulty:</b> {reviews[index]?.difficulties}</ListGroup.Item>

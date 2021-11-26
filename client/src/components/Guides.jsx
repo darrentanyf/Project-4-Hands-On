@@ -109,8 +109,8 @@ const Guides = () => {
             ))}
             <Container>
             <br></br>
-                {auth === false ? ( <h5 style={{margin:20}}>Need to be logged in to give feedback</h5>)
-                : userId === guide?.users_id ? ( <Button variant="outline-secondary" style={{margin:20}}>Click here if you want to make changes to your guide</Button>)
+                {auth === false ? ( <h5 style={{margin:20}} id='feedbackTitle'>Need to be logged in to give feedback</h5>)
+                : userId === guide?.users_id ? ( <Button variant="outline-secondary" style={{margin:20}} id="reviewButton">Click here if you want to make changes to your guide</Button>)
                 :
                 ( <Container><br></br>
                 <h6>Your Review</h6><br></br>

@@ -35,7 +35,7 @@ const Cards = () => {
                                 <Card.Text>
                                     {guides[index]?.description.slice(0,99)+"..."}
                                 </Card.Text>
-                                <a href={`/guides/${guides[index]?.guides_id}`}><Button variant="outline-dark" >Check it out</Button></a>
+                                <a href={`/guides/${guides[index]?.guides_id}`} id={`cardButton${index}`}><Button variant="outline-dark" >Check it out</Button></a>
                             </Card.Body>
                         </Card>
                     </Col>

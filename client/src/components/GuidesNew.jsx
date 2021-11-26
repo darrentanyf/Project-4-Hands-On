@@ -166,7 +166,7 @@ const GuidesNew = () => {
                                 </FloatingLabel>
                             </Col>
                             <Col md>
-                                <FloatingLabel controlId="guideDescription" label="Guide Desription">
+                                <FloatingLabel controlId="guideDescription" label="Guide Description">
                                     <Form.Control
                                         as="textarea"
                                         placeholder="Leave your feedback here"
@@ -296,11 +296,11 @@ const GuidesNew = () => {
                             </Row>
                         ))}
                         <br></br>
-                        <Button onClick={handleIncrease} style={{ height: 50, width: 200 }} variant="outline-success">Add Steps</Button>
-                        <Button onClick={handleDecrease} style={{ height: 50, width: 200 }} variant="outline-success">Minus Steps</Button>
+                        <Button onClick={handleIncrease} id="add" style={{ height: 50, width: 200 }} variant="outline-success">Add Steps</Button>
+                        <Button onClick={handleDecrease} id="minus" style={{ height: 50, width: 200 }} variant="outline-success">Minus Steps</Button>
                         <br></br>
                         <br></br>
-                        <button type="submit" class="btn btn-primary" style={{ height: 50, width: 200 }}>
+                        <button type="submit" class="btn btn-primary" style={{ height: 50, width: 200 }} id="formSubmit">
                             Submit
                         </button>
                     </Form>
