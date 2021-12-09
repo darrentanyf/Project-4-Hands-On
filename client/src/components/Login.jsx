@@ -23,10 +23,10 @@ export default function Login() {
 
                 setAuth(response.data.authenticated)
                 if (response.data.authenticated) {
-                window.localStorage.setItem("token", response.data.token);
-                setTimeout(function () {
-                    window.location.replace("/");
-                }, 1300);
+                    window.localStorage.setItem("token", response.data.token);
+                    setTimeout(function () {
+                        window.location.replace("/");
+                    }, 1300);
                 }
             });
     };
@@ -34,45 +34,58 @@ export default function Login() {
     return (
         <div>
             <Navibar />
-            <h2>Login</h2>
-            <div class="container col-md-4">
-                <form onSubmit={handleSubmit}>
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input
-                            type="username"
-                            class="form-control"
-                            id="username"
-                            placeholder="Enter Username"
-                        />
+            <div class="container">
+                <div class="row" style={{ margin: "40px" }}>
+                    <div class="col"></div>
+                    <div class="col-6" style={{ border: "1px solid #EFF1F2", width: 450 }}>
+                        <div class="row" style={{ margin: 15 }}><h3><b>Login</b></h3></div>
+                        <form onSubmit={handleSubmit}>
+                            <div class="row" style={{ margin: 15 }}>
+                                <div class="form-group" style={{ "margin-bottom": 20 }}>
+                                    <input
+                                        type="username"
+                                        class="form-control"
+                                        id="username"
+                                        placeholder="Username"
+                                        style={{ "border-radius": 0, height: 47 }}
+                                    />
+                                </div>
+                                <div class="form-group" style={{ "margin-bottom": 10 }}>
+                                    <input
+                                        type="password"
+                                        class="form-control "
+                                        id="password"
+                                        placeholder="Password"
+                                        style={{ "border-radius": 0, height: 47 }}
+                                    />
+                                </div>
+                            </div>
+                            <button type="submit" id="loginButton">
+                                Submit
+                            </button>
+                            <br></br>
+                        </form>
+                        {Auth === 0 ? (<br></br>)
+                            : Auth === true ? (
+                                <div class="alert alert-success" role="alert">
+                                    Login is successful!
+                                </div>
+                            )
+                                : (
+                                    <div class="alert alert-danger" role="alert">
+                                        Username or Password is invalid.
+                                    </div>
+                                )
+                        }
+                        <div class="row" style={{"border-top": "1px solid #EFF1F2", "border-bottom": "1px solid #EFF1F2", margin:10, padding: 20}}>
+                            <p>Hello World</p>
+                        </div>
+                        <div class="row">
+                            <p>This site gurrantes that your personal information will not be sold</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input
-                            type="password"
-                            class="form-control "
-                            id="password"
-                            placeholder="Enter Password"
-                        />
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        Submit
-                    </button>
-                    <br></br>
-                </form>
-                { Auth === 0 ?  (<br></br>) 
-                : Auth === true ? (
-                <div class="alert alert-success" role="alert">
-                    Login is successful!
+                    <div class="col"></div>
                 </div>
-                )
-                : (
-                    <div class="alert alert-danger" role="alert">
-                    Username or Password is invalid.
-                </div>
-                )
-                }
-
             </div>
         </div>
     );

@@ -10,11 +10,10 @@ const Navibar = () => {
   Authenticate()
   const auth = verify?.user?.authenticated
   const userId = verify?.user?.userInfo
-  console.log("CONTEXT 2", verify)
+
   
 
   const handleLogout = () => {
-    console.log("HELLO ARE YOU WORKING")
     localStorage.clear()
   }
 
@@ -24,12 +23,12 @@ const Navibar = () => {
       <div>
         <nav class="navbar navbar-light bg-light justify-content-between">
           <div style={{ display: "flex", justifyContent: "left" }}>
-            <a class="nav-link" href="/guides">Discover</a>
+            <a class="nav-link" href="/guides">Discover </a>
             <a class="nav-link" href="/guides/new" id="newGuide">Start a guide</a>
           </div>
 
           <div style={{ display: "flex", justifyContent: "center" }}>
-          <a class="navbar-brand" href="/"><b>HandsOn</b></a>
+          <a class="navbar-brand" href="/"><h2>Hands On</h2></a>
           </div>
 
          
