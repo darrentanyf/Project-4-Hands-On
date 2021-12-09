@@ -71,6 +71,7 @@ const GuidesNew = () => {
             let newDescription = "description" + i
             console.log("STEPS STEP", "STEP " + i)
             console.log("STEPS IMAGE", image[newImage])
+            
 
             const res = await uploadFile(imageFile[newImage])
             console.log("IS THIS THE CLOUDINARY LINK?", res)
@@ -102,6 +103,7 @@ const GuidesNew = () => {
         })
         navigate("/")
      }
+     
 
     useEffect(()=> {
         const sendNewGuide = async () => {

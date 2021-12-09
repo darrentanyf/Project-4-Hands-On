@@ -36,3 +36,5 @@ Cypress.Commands.add('logIn', (email, password) => {
   Cypress.Commands.add('userToken', (status) => {
     cy.window().its("localStorage.token").should(status);
   })
+
+  

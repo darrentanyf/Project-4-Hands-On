@@ -1,14 +1,14 @@
 //! Loggin in and Out (Version 1)
-// describe('Website Test', () => {
-//     it('Login In and Log out V1', () => {
-//       cy.visit('/login')
-//       cy.get('#username').type('test')
-//       cy.get('#password').type('test')
-//       cy.get('button').click()
-//       cy.wait(4000)
-//       cy.get('#logout').click()
-//     })
-//   })
+describe('Website Test', () => {
+    it('Login In and Log out V1', () => {
+      cy.visit('/login')
+      cy.get('#username').type('test')
+      cy.get('#password').type('test')
+      cy.get('button').click()
+      cy.wait(4000)
+      cy.get('#logout').click()
+    })
+  })
 
 ////////////////////////////////////////////////////////////////////
 //! Loggin in and Out (Version 2)
