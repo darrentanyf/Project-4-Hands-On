@@ -32,13 +32,13 @@ export default function Login() {
     };
 
     return (
-        <div>
+        <div style={{"background-color": "#F1F1F1"}}>
             <Navibar />
-            <div class="container">
-                <div class="row" style={{ margin: "40px" }}>
+            <div class="container" style={{ padding: "60px" }}>
+                <div class="row" >
                     <div class="col"></div>
-                    <div class="col-6" style={{ border: "1px solid #EFF1F2", width: 450 }}>
-                        <div class="row" style={{ margin: 15 }}><h3><b>Login</b></h3></div>
+                    <div class="col-6" style={{ border: "1px solid #EFF1F2", width: 450, "backgroundColor": "white" }}>
+                        <div class="row" style={{ margin: 25 }}><h2>Login</h2></div>
                         <form onSubmit={handleSubmit}>
                             <div class="row" style={{ margin: 15 }}>
                                 <div class="form-group" style={{ "margin-bottom": 20 }}>
@@ -77,11 +77,11 @@ export default function Login() {
                                     </div>
                                 )
                         }
-                        <div class="row" style={{"border-top": "1px solid #EFF1F2", "border-bottom": "1px solid #EFF1F2", margin:10, padding: 20}}>
-                            <p>Hello World</p>
+                        <div class="row" style={{"border-top": "1px solid #EFF1F2", "border-bottom": "1px solid #EFF1F2", margin:10, padding: 25, display: "flex", "justifyContent": "center"}}>
+                            New to Hands On? <a href="/signup" style={{width: 80, height:20, textDecoration: "none"}}>Sign Up</a>
                         </div>
-                        <div class="row">
-                            <p>This site gurrantes that your personal information will not be sold</p>
+                        <div class="row" >
+                            <p style={{"font-size": 13}}>Hands On only collects the data that is necessary to provide its services and stores it in the anonymized way.</p>
                         </div>
                     </div>
                     <div class="col"></div>
