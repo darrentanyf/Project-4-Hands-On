@@ -22,21 +22,22 @@ const Infobar = () => {
 
 
     return (
-        <Container style={{margin: 20}}>
-            <Row style={{ border: "1px solid #EFF1F2", "box-shadow": "rgba(149, 157, 165, 0.2) 0px 8px 24px" }}>
-                <Col style={{padding: 20}}>
-                    <p style={{"font-size": 30, "font-weight": "bold", margin: 0, color: "#2C79AD" }}>{guidesCount}</p>
+        <Container >
+            <div class="row" style={{ border: "1px solid #EFF1F2", "box-shadow": "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px", "margin": "0 auto", width: "84%"}}>
+                
+                <div class="col" style={{ padding: 20 }}>
+                    <p style={{ "font-size": 30, "font-weight": "bold", margin: 0, color: "#2C79AD" }}>{guidesCount}</p>
                     guides created
-                </Col>
-                <Col style={{padding: 20}}>
-                    <p style={{"font-size": 30, "font-weight": "bold", margin: 0, color: "#2C79AD" }}>{stepsCount}</p>
-                     steps followed
-                </Col>
-                <Col style={{padding: 20}}>
-                <p style={{"font-size": 30, "font-weight": "bold", margin: 0, color: "#2C79AD" }}>{successCount}</p>
+                </div>
+                <div class="col"  style={{ padding: 20 }}>
+                    <p style={{ "font-size": 30, "font-weight": "bold", margin: 0, color: "#2C79AD" }}>{stepsCount}</p>
+                    steps followed
+                </div>
+                <div class="col"  style={{ padding: 20 }}>
+                    <p style={{ "font-size": 30, "font-weight": "bold", margin: 0, color: "#2C79AD" }}>{successCount}</p>
                     sucess stories
-                </Col>
-            </Row>
+                </div>
+            </div>
         </Container>
     )
 }

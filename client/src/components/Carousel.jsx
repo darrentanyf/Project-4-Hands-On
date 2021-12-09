@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import Carousel from 'react-bootstrap/Carousel'
-import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import axios from "axios"
 
@@ -21,7 +20,9 @@ const Carouselimage = () => {
 
     return (
         <div>
-            <Row style={{ padding: 20 }}>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-10">
                 <Carousel >
                     { guides?.map((guid,index)=>(
                                             <Carousel.Item>
@@ -29,54 +30,19 @@ const Carouselimage = () => {
                                                 className="d-block w-100"
                                                 src={guides[index].guides_img}
                                                 alt="First slide"
-                                                height="480px"
+                                                height="500px"
+                                                
+                                                
                                             />
                                             <Carousel.Caption>
-                                                {/* <h3></h3> */}
                                                 <h5>{guides[index].name}</h5>
                                             </Carousel.Caption>
                                         </Carousel.Item>
                     ))}
-                    {/* <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src="https://images.unsplash.com/photo-1591382696684-38c427c7547a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                            alt="First slide"
-                            height="480px"
-                        />
-                        <Carousel.Caption>
-                            <h3>Guide 1</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src="https://images.unsplash.com/photo-1560448075-bb485b067938?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                            alt="Second slide"
-                            height="480px"
-                        />
-
-                        <Carousel.Caption>
-                            <h3>Guide 2</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src="https://i.imgur.com/qbIZoku.jpeg"
-                            alt="Third slide"
-                            height="480px"
-                        />
-
-                        <Carousel.Caption>
-                            <h3>Guide 3</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                        </Carousel.Caption>
-                    </Carousel.Item> */}
                 </Carousel>
-            </Row>
+                </div>
+                <div class="col"></div>
+            </div>
         </div>
     )
 
