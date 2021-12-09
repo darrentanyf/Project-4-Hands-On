@@ -90,18 +90,6 @@ export default function Login() {
                             </button>
                             <br></br>
                         </form>
-                        {/* {Auth === 0 ? (<br></br>)
-                            : Auth === true ? (
-                                <div class="alert alert-success" role="alert" style={{ "border-radius": 0, margin: 10}}>
-                                    Login is successful!
-                                </div>
-                            )
-                                : (
-                                    <div class="alert alert-danger" role="alert" style={{ "border-radius": 0, margin: 10}}>
-                                        Username or Password is invalid.
-                                    </div>
-                                )
-                        } */}
                         <div class="row" style={{"border-top": "1px solid #EFF1F2", "border-bottom": "1px solid #EFF1F2", margin:10, padding: 25, display: "flex", "justifyContent": "center"}}>
                             New to Hands On? <a href="/signup" style={{width: 80, height:20, textDecoration: "none"}}>Sign Up</a>
                         </div>
@@ -114,7 +102,7 @@ export default function Login() {
             </div>
         </div>
         <Categories />
-        < ToastContainer theme="colored"/>
+        < ToastContainer theme="light"/>
         </div>
     );
 }

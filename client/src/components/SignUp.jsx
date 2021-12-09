@@ -3,6 +3,8 @@ import axios from "axios"
 import { useState } from "react"
 import Navibar from "./Navibar"
 import Categories from "../components/Categories"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -29,6 +31,16 @@ export default function Signup() {
                 console.log("Message", response.data.message)
 
                 if (response.data.authenticated) {
+                    toast.info(response.data.message, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        }); 
+
                     window.localStorage.setItem("token", response.data.token)
                     setAuth(response.data.authenticated)
 
@@ -39,7 +51,15 @@ export default function Signup() {
                 else {
                     setAuth(response.data.authenticated)
                     setMessage(response.data.message)
-
+                    toast.error(response.data.message, {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        }); 
                 }
 
 
@@ -114,25 +134,13 @@ export default function Signup() {
                             <div class="row" style={{width: "88%", margin: "0 auto"}}>
                             <p style={{"font-size": 13}}>By signing up, you agree to our Privacy Policy, Cookie Policy and Terms of Use. </p>
                         </div>
-                        {Auth === 0 ? (<br></br>)
-                            : Auth === true ? (
-                                <div class="alert alert-success" role="alert" style={{ "border-radius": 0}}>
-                                    Sign Up is successful!
-                                </div>
-                            )
-                                : (
-                                    <div class="alert alert-danger" role="alert" style={{ "border-radius": 0}}>
-                                        {Message}
-                                    </div>
-                                )
-                        }
                     </div>
                     <div class="col"></div>
                     </div>
                 </div>
             </div>
             <Categories /> 
-
+            <ToastContainer theme="light" />
             </div>
             )
 }
