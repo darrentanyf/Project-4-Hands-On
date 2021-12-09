@@ -23,7 +23,7 @@ const Home = () => {
                     <div class="col"></div>
                     <div class="col-7">
                         <h3 style={{ "margin-top": 20, "margin-bottom": 20 }}>Giving everyone the ability to be creative with their hands!</h3>
-                        <p style={{margin:0}}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        <p style={{}}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit "</p>
                     </div>
                     <div class="col"></div>
