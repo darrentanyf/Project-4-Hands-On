@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios"
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 const Cards = () => {
     const [guides, setGuides] = useState([])
@@ -50,7 +48,6 @@ const Cards = () => {
                 </nav>
             </div>
             <br></br>
-            <p style={{ "border-top": "1px solid lightgrey", margin: 15 }}>HandsOn Pte Ltd</p>
         </div>
     );
 };

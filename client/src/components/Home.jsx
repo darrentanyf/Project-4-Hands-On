@@ -10,6 +10,7 @@ import Categories from "../components/Categories"
 const Home = () => {
 
     return (
+        <div>
         <div style={{"background-color": "#F1F1F1"}}>
             <div>
                 <Navibar />
@@ -34,6 +35,11 @@ const Home = () => {
                     <Cards />
                 </div>
             </div>
+        </div>
+        <div>
+            <Categories />
+            <br></br>
+        </div>
         </div>
     )
 }
