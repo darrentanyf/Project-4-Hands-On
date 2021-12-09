@@ -81,7 +81,7 @@ export default function Login() {
                             New to Hands On? <a href="/signup" style={{width: 80, height:20, textDecoration: "none"}}>Sign Up</a>
                         </div>
                         <div class="row" >
-                            <p style={{"font-size": 13}}>Hands On only collects the data that is necessary to provide its services and stores it in the anonymized way.</p>
+                            <p style={{"font-size": 13}}>Hands On only collects the data that is necessary to provide its services and stores it in an anonymized way.</p>
                         </div>
                     </div>
                     <div class="col"></div>

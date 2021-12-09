@@ -19,22 +19,21 @@ const Navibar = () => {
 
 
   return (
-    <div>
       <div>
-        <nav class="navbar navbar-light bg-light justify-content-between">
-          <div style={{ display: "flex", justifyContent: "left" }}>
-            <a class="nav-link" href="/guides">Discover </a>
+        <nav class="navbar navbar-light bg-light">
+          <div style={{ display: "flex"}}>
+            <a class="nav-link" href="/guides">Discover</a>
             <a class="nav-link" href="/guides/new" id="newGuide">Start a guide</a>
           </div>
 
-          <div style={{ display: "flex", justifyContent: "center" }}>
-          <a class="navbar-brand" href="/"><h2>Hands On</h2></a>
+          <div style={{ display: "flex"}}>
+          <a class="navbar-brand" href="/" ><h2 style={{"margin-right": "35px"}}>Hands On</h2></a>
           </div>
 
          
             { auth === true ? 
             (
-              <div style={{ display: "flex", justifyContent: "right" }}>
+              <div style={{ display: "flex"}}>
                 <a class="nav-link" href={`/users/${userId}`} id="account">My Account</a>
               <a class="nav-link" href="/" onClick={handleLogout} id="logout">Logout</a>
               </div>
@@ -42,7 +41,7 @@ const Navibar = () => {
             )
             :
             (
-            <div style={{ display: "flex", justifyContent: "right" }}>
+            <div style={{ display: "flex"}}>
             <a class="nav-link" href="/login">Login</a>
             <a class="nav-link" href="/signup">Sign Up</a>
             </div>
@@ -51,7 +50,6 @@ const Navibar = () => {
 
         </nav>
       </div>
-    </div>
   );
 }
 
