@@ -2,6 +2,7 @@ import React from "react"
 import axios from "axios"
 import { useState } from "react"
 import Navibar from "./Navibar"
+import Categories from "../components/Categories"
 
 
 
@@ -46,6 +47,7 @@ export default function Signup() {
     }
 
     return (
+        <div>
         <div style={{ "background-color": "#F1F1F1" }}>
             <Navibar />
             <div class="container" style={{ padding: "60px" }}>
@@ -128,6 +130,9 @@ export default function Signup() {
                     <div class="col"></div>
                     </div>
                 </div>
+            </div>
+            <Categories /> 
+
             </div>
             )
 }
