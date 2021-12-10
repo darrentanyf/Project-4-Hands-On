@@ -20,7 +20,7 @@ const Navibar = () => {
 
   return (
       <div>
-        <nav class="navbar navbar-light" >
+        <nav class="navbar navbar-light" style={{"backgroundColor": "white"}}>
           <div style={{ display: "flex"}}>
             <a class="nav-link" href="/guides">Discover</a>
             <a class="nav-link" href="/guides/new" id="newGuide">Start a guide</a>

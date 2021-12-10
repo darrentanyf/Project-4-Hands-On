@@ -30,7 +30,13 @@ const Carouselimage = () => {
                                                 className="d-block w-100"
                                                 src={guides[index].guides_img}
                                                 alt="First slide"
-                                                height="500px"
+                                                
+                                                style={{
+                                                    height: 500,
+                                                    "background-size": "cover",
+                                                    "box-sizing": "border-box",
+                                                    
+                                                }}
                                                 
                                                 
                                             />

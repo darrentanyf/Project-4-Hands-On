@@ -5,6 +5,7 @@ import Navibar from "./Navibar"
 import Categories from "../components/Categories"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import About from "../components/About"
 
 
 
@@ -140,6 +141,7 @@ export default function Signup() {
                 </div>
             </div>
             <Categories /> 
+
             <ToastContainer theme="light" />
             </div>
             )

@@ -37,6 +37,10 @@
   }
 }
 
+body {
+  font-size: 150%
+}
+
 .font-link {
   font-family: 'Roboto', sans-serif;
 }
