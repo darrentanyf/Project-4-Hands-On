@@ -34,6 +34,7 @@ const Guides = () => {
             setGuide(data.data.guideData)
             setSteps(data.data.stepData)
             setReviews(data.data.reviewData)
+
         }
         fetchGuides(id);
     }, [])
@@ -56,6 +57,7 @@ const Guides = () => {
                         </div>
                         <div class="col" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
 
+
                             <div class="row" style={{ border: "1px solid #D8DADB", height: "3em", borderRadius: 5 }}>
                                 <div class="col" style={{ display: "flex", alignItems: "center", justifyContent: "left" }}>
                                     <p style={{ margin: 0 }}>
@@ -66,14 +68,14 @@ const Guides = () => {
                                         <b>Difficulty</b></p>
                                 </div>
                                 <div class="col" style={{ display: "flex", alignItems: "center", justifyContent: "right", marginRight: 15 }}>
-                                    { guide?.difficulty < 3 ?  
-                                    <p style={{ margin: 0, color: "#4EDC32" }}><b>Easy</b></p>
-                                    : 2 < guide?.difficulty < 5 ?
-                                    <p style={{ margin: 0, color: "#FFD21A" }}><b>Medium</b></p>
-                                    : 
-                                    <p style={{ margin: 0, color: "#C70039" }}><b>Hard</b></p>
+                                    {guide?.difficulty < 3 ?
+                                        <p style={{ margin: 0, color: "#49CA30" }}><b>Easy</b></p>
+                                        : 2 < guide?.difficulty < 5 ?
+                                            <p style={{ margin: 0, color: "#FFD21A" }}><b>Medium</b></p>
+                                            :
+                                            <p style={{ margin: 0, color: "#C70039" }}><b>Hard</b></p>
                                     }
-                                    
+
                                 </div>
                             </div>
 
@@ -88,7 +90,7 @@ const Guides = () => {
                                         <b>Time Taken </b> </p>
                                 </div>
                                 <div class="col" style={{ display: "flex", alignItems: "center", justifyContent: "right", marginRight: 15 }}>
-                                    <p style={{ margin: 0 }}><b>{guide?.time_taken > 1 ?  guide?.time_taken + " Hours" :  guide?.time_taken + " Hour" } </b></p>
+                                    <p style={{ margin: 0 }}><b>{guide?.time_taken > 1 ? guide?.time_taken + " Hours" : guide?.time_taken + " Hour"} </b></p>
                                 </div>
                             </div>
 
@@ -107,14 +109,15 @@ const Guides = () => {
                                 </div>
                             </div>
 
+
                             <div class="row" style={{ border: "1px solid #D8DADB", height: "3em", borderRadius: 5 }}>
                                 <div class="col" style={{ display: "flex", alignItems: "center", justifyContent: "left" }}>
                                     <p style={{ margin: 0 }}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16" style={{ height: "1.5em", margin: "0 15" }}>
-                                        <path d="M5.354 5.119 7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.548.548 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.52.52 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.58.58 0 0 1 .085-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.565.565 0 0 1 .162-.505l2.907-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.001 2.223 8 2.226v9.8z" />
-                                    </svg>
-                                    <b>Rating</b></p>
-                                    </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16" style={{ height: "1.5em", margin: "0 15" }}>
+                                            <path d="M5.354 5.119 7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.548.548 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.52.52 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.58.58 0 0 1 .085-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.565.565 0 0 1 .162-.505l2.907-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.001 2.223 8 2.226v9.8z" />
+                                        </svg>
+                                        <b>Rating</b></p>
+                                </div>
                                 <div class="col" style={{ display: "flex", alignItems: "center", justifyContent: "right", marginRight: 15 }}>
                                     <p style={{ margin: 0 }}><b> {steps?.length}</b></p>
                                     <span class="fa fa-star checked"></span>
@@ -127,32 +130,39 @@ const Guides = () => {
 
 
                             <div class="row" style={{ border: "1px solid #D8DADB", height: "3em", borderRadius: 5 }}>
-                                <p style={{ display: "flex", alignItems: "center", justifyContent: "left", margin: 0 }}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16" style={{ height: "1.5em", margin: "0 15" }}>
-                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                        <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
-                                    </svg>
-                                    <b>Success</b></p>
-
+                                <div class="col" style={{ display: "flex", alignItems: "center", justifyContent: "left" }}>
+                                    <p style={{ margin: 0 }}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16" style={{ height: "1.5em", margin: "0 15" }}>
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+                                        </svg>
+                                        <b>Success</b></p>
+                                </div>
+                                <div class="col" style={{ display: "flex", alignItems: "center", justifyContent: "right", marginRight: 15 }}>
+                                    <p style={{ margin: 0 }}><b> 10 </b></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    {steps ? steps.map((steps) => (
-                        <Container >
-                            <Row style={{ margin: 20, padding: 20, border: "1px solid ", "box-shadow": "1px 2px lightgrey", "border-radius": 5 }} className="bg-light border">
-                                <h5>Step {steps?.step}</h5>
-                                <Col lg="5" style={{ paddingBottom: 20 }}>
-                                    <Image src={steps?.steps_img} alt="" style={{ height: 200, width: 200, "border-radius": 5, border: "3px solid darkgrey" }} />
-                                </Col>
-                                <Col lg="6" style={{ display: "flex", justifyContent: "center" }}>
-                                    <Stack gap={4} style={{ margin: 20 }}>
-                                        <div ><b>Title</b><br></br>{steps?.title}</div>
-                                        <div ><b>Description</b><br></br>{steps?.description}</div>
-                                    </Stack>
-                                </Col>
 
-                            </Row>
-                        </Container>
+
+                    {steps ? steps.map((steps) => (
+                        <div class="container" >
+                            <div class="row" style={{marginTop: 40, display: "flex", justifyContent: "left" }}>
+                                <h3 style={{display: "flex"}}><b>Step {steps?.step}: </b>{steps?.title}</h3>
+                            </div>
+                            <div class="row" style={{marginTop:20}}>
+                                <div class="col" lg="5" style={{display: "flex", justifyContent: "left" }}>
+                                    <Image src={steps?.steps_img} alt="" class="img-fluid"style={{ width: 700, height: 500, "border-radius": 1, border: "1px solid #D8DADB" }} />
+                                </div>
+                                <div class="col" lg="6" style={{ display: "flex", flexDirection: "column", justifyContent: "center", borderRadius: 5 }}>
+                                    <ul>
+                                        <li>{steps?.description}</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
                     )) : console.log("MISSING")}
                     <h5>Reviews and Feedback</h5>
                     {reviews.map((ele, index) => (
