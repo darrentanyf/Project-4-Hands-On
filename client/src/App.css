@@ -65,6 +65,10 @@ body {
   color:#3498DB;
 }
 
+.checked {
+  color: orange;
+}
+
 #loginSignupButton {
   width: 88%;
   border: none;

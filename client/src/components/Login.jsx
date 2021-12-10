@@ -92,7 +92,7 @@ export default function Login() {
                             <br></br>
                         </form>
                         <div class="row" style={{"border-top": "1px solid #EFF1F2", "border-bottom": "1px solid #EFF1F2", margin:10, padding: 25, display: "flex", "justifyContent": "center"}}>
-                            New to Hands On? <a href="/signup" style={{width: 80, height:20, textDecoration: "none"}}>Sign Up</a>
+                            New to Hands On? <a href="/signup" style={{width: 100, height:20, textDecoration: "none"}}>Sign Up</a>
                         </div>
                         <div class="row" >
                             <p style={{"font-size": 13}}>Hands On only collects the data that is necessary to provide its services and stores it in an anonymized way.</p>
