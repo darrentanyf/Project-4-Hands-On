@@ -9,7 +9,7 @@ export default function Discover() {
     return (
         <div>
             <Navibar/>
-        <Container>
+        {/* <Container>
             <Row>
                 <p>All Categories</p>
             </Row>
@@ -22,7 +22,7 @@ export default function Discover() {
             <Row>
                 <p>Most Success</p>
             </Row>
-        </Container>
+        </Container> */}
         </div>
     )
 }

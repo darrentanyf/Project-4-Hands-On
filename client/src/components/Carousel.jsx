@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import Carousel from 'react-bootstrap/Carousel'
-import Col from 'react-bootstrap/Col'
 import axios from "axios"
 
 const Carouselimage = () => {
@@ -12,7 +11,7 @@ const Carouselimage = () => {
             const data = await axios.get(url);
             console.log("DATA", data.data)
             console.log(data.data.length)
-            setGuides([data.data[0],data.data[1],data.data[2]])
+            setGuides([data.data[0], data.data[1], data.data[2]])
 
         }
         fetchGuides()
@@ -23,29 +22,25 @@ const Carouselimage = () => {
             <div class="row">
                 <div class="col"></div>
                 <div class="col-10">
-                <Carousel >
-                    { guides?.map((guid,index)=>(
-                                            <Carousel.Item>
-                                            <img
-                                                className="d-block w-100"
-                                                src={guides[index].guides_img}
-                                                alt="First slide"
-                                                
-                                                style={{
-                                                    height: 500,
-                                                    "background-size": "cover",
-                                                    "box-sizing": "border-box",
-                                                    
-                                                }}
-                                                
-                                                
-                                            />
-                                            <Carousel.Caption>
-                                                <h5>{guides[index].name}</h5>
-                                            </Carousel.Caption>
-                                        </Carousel.Item>
-                    ))}
-                </Carousel>
+                    <Carousel >
+                        {guides?.map((guid, index) => (
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src={guides[index].guides_img}
+                                    alt="First slide"
+                                    style={{
+                                        height: 500,
+                                        "background-size": "cover",
+                                        "box-sizing": "border-box",
+                                    }}
+                                />
+                                <Carousel.Caption>
+                                    <h5>{guides[index].name}</h5>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        ))}
+                    </Carousel>
                 </div>
                 <div class="col"></div>
             </div>

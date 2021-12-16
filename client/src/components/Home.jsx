@@ -23,27 +23,21 @@ const Home = () => {
                     color: "white"
                 }}>
                     <div class="container" style={{padding: '8.5em', }}>
-                        <h1 class="display-4">Creativity is about having fun.<br></br>Lets bring it to life here.</h1>
-                        <p><b>Hands On is a place for everyone to share their creative guides to improve and have fun.</b></p>
-                        <a class="btn btn-primary btn-lg" href="www.google.com" role="button">Learn more</a>
+                        <h1 class="display-4">Creativity is about having fun</h1>
+                        <p style={{fontSize: 25}}>Hands On is a place for everyone to share their creative ideas to improve their daily lives and simplify the problems they face.  </p>
+                        <hr class="my-4"></hr>
+                        <p style={{fontSize: 23}}>Find a guide that you like or create one to share with others now</p>
+                        <a class="btn btn-primary btn-lg" href="www.google.com" role="button" style={{"backgroundColor": "#154360", border: "1px solid #154360"}}>Learn more</a>
                     </div>
 
                     {/* <Carousel /> */}
                 </div>
-                <div class="container">
-                    <div class="row" style={{ margin: 20 }}>
-                        <div class="col"></div>
-                        <div class="col-10">
-                            {/* <h3 style={{ "margin-top": 20, "margin-bottom": 20 }}>Giving everyone the ability to be creative with their hands!</h3>
-                            <p style={{}}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit "</p> */}
-                        </div>
-                        <div class="col"></div>
-                    </div>
-                    <div class="row">
+                <div class="container-fluid">
+                    <div class="row" style={{width:"90%",margin: "auto", maxWidth: 1700}}>
                         <Infobar />
                     </div>
-                    <div class="row">
+                    <div class="row" style={{width:"90%",margin: "auto", maxWidth: 1700}}>
+                        
                         <Cards />
                     </div>
                 </div>

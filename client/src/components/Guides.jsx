@@ -127,8 +127,6 @@ const Guides = () => {
                                     <span class="fa fa-star"></span>
                                 </div>
                             </div>
-
-
                             <div class="row" style={{ border: "1px solid #D8DADB", height: "3em", borderRadius: 5 }}>
                                 <div class="col" style={{ display: "flex", alignItems: "center", justifyContent: "left" }}>
                                     <p style={{ margin: 0 }}>
