@@ -153,7 +153,7 @@ const Guides = () => {
                             </div>
                             <div class="row" style={{marginTop:20}}>
                                 <div class="col" lg="5" style={{display: "flex", justifyContent: "left" }}>
-                                    <Image src={steps?.steps_img} alt="" class="img-fluid"style={{ width: 700, height: 500, "border-radius": 1, border: "1px solid #D8DADB" }} />
+                                    <Image src={steps?.steps_img} alt="" class="img-fluid"style={{ width: 700, height: 400, "border-radius": 1, border: "1px solid #D8DADB" }} />
                                 </div>
                                 <div class="col" lg="6" style={{ display: "flex", flexDirection: "column", justifyContent: "center", borderRadius: 5 }}>
                                     <ul>
