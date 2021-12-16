@@ -23,7 +23,7 @@ const Infobar = () => {
 
     return (
         <div class="container-fluid">
-            <div class="row" style={{ border: "1px solid #D8DADB", "box-shadow": "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px", marginTop: 20}}>
+            <div class="row" style={{ border: "1px solid #D8DADB", "box-shadow": "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px", marginTop: 50}}>
                 <div class="col" style={{ padding: 20, borderRight: "1px solid #D8DADB", margin: 20}}>
                     <p style={{ "font-size": 30, "font-weight": "bold", margin: 0, color: "#2C79AD"}}>{guidesCount}</p>
                     <b>Guides Created</b>
